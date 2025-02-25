@@ -1,0 +1,27 @@
+<div class="main-header fixed-top" [ngClass]="{ 'hide-header': isScrolled }">
+  <div class="container d-flex justify-content-between align-items-center">
+    <div class="logo">
+      <img src="assets/image.png" alt="Logo" />
+    <nav class="nav-links">
+      <a href="#">Creator</a>
+      <a href="#">Books</a>
+      <a href="#">Invoice</a>
+      <a href="#">Payroll</a>
+      <a href="#">Commerce</a>
+      <a href="#">Billing</a>
+      <a href="#">All Products</a>
+    </nav>
+  </div>
+    <div class="auth-buttons">
+      <i class="fal fa-search"></i>
+      <a routerLink="/login" class="btn signIn">Sign In</a>
+      <a routerLink="/register" class="btn signUp">Sign Up Now</a>
+    </div>
+  </div>
+</div>
+
+<div class="sub-header" [ngClass]="{ 'fixed-top': isScrolled }">
+<app-sub-header/>
+</div>
+
+

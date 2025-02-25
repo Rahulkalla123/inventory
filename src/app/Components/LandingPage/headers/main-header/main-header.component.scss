@@ -1,0 +1,65 @@
+@mixin smooth-transition {
+  transition: all 0.5s ease-in-out;
+}
+
+.main-header {
+  background-color: white;
+  padding:25px;
+  border-bottom: 1px solid #e7ebf0;
+  @include smooth-transition;
+  .container {
+    max-width: 100%;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  .logo img {
+    height: 40px;
+  }
+
+  .nav-links {
+    a {
+      margin: 0 15px;
+      font-size: 16px;
+      color: #333;
+      text-decoration: none;
+
+      &:hover {
+        color: #d32f2f;
+      }
+    }
+  }
+
+  .auth-buttons {
+     .signUp{
+      margin-left: 10px;
+      background-color: #e42527;
+      color: #fff;
+      border-radius: 0;
+      font-weight: 400;
+    }
+  }
+
+  &.hide-header {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.sub-header {
+  background-color: white;
+  padding: 25px 0;
+  @include smooth-transition;
+  .container {
+  max-width: 100%;
+padding: 0px 30px;
+}
+
+  &.fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+  }
+}

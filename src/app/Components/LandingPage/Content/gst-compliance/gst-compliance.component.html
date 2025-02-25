@@ -1,0 +1,45 @@
+<div #gstComplianceSection class="gst-compliance">
+  <h1 class="title">What makes Zoho Inventory GST Compliant</h1>
+  
+  <div class="tabs">
+    <ul>
+      <li 
+        *ngFor="let tab of tabs; let i = index" 
+        [class.active]="activeTab === i"
+        (click)="selectTab(i)">
+        {{ tab.name }}
+      </li>
+    </ul>
+  </div>
+  <div class="gstin-main">
+    <div class="gstin-section">
+      <div class="gstin-form" [@slideImage]="animateState">
+        <img class="imgDashboard" [src]="activeContent.image" [alt]="activeContent.name" />
+      </div>
+
+      <div class="gstin-info" [@slideContent]="animateState">
+        <h4>{{ activeContent.title }}</h4>
+        <p>{{ activeContent.description }}</p>
+        <ul>
+          <li *ngFor="let point of activeContent.points">
+            <i class="fa fa-check"></i> {{ point }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="E-Invoicing-Main">
+  <div class="E-Invoicing-Section">
+    <div class="image">
+      <img src="assets/image.png" alt="noimage" width="100px">
+    </div>
+    <div class="content">
+      <h5>E-Invoicing</h5>
+      <p>Create e-invoices with Zoho Inventory and make your business compliant with the GST e-invoicing laws</p>
+    </div>
+    <div class="button">
+      <button class="btn">LEARN MORE</button>
+    </div>
+  </div>
+</div>

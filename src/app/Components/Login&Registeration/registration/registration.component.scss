@@ -1,0 +1,254 @@
+.registerMain {
+    display: flex;
+    width: 100%;
+
+    #carouselExampleSlidesOnly {
+        width: 60%;
+
+        .carousel-inner {
+            border-radius: 20px;
+            width: 74%;
+            position: relative;
+            margin: 2em 0em 1em 2.5em;
+
+
+            .carousel-item {
+                transition: transform .4s ease-in-out;
+                max-height: 780px;
+                min-height: 570px;
+
+                .left-content {
+                    width: 65%;
+                    padding: 2em;
+
+                    h2 {
+                        font-size: 32px;
+                        color: #fff;
+
+                        span {
+                            color: #f7b500;
+                        }
+                    }
+
+                    .line {
+                        border-top: 1px solid #616161;
+                        width: 84px;
+                        margin-top: 20px;
+                    }
+                    .highlights {
+                        color: #333;
+                    }
+                }
+
+                .right-content {
+                    width: 30%;
+                    padding: 2em;
+
+                    ul {
+                        list-style: none;
+                        padding: 0;
+                        color: #fff;
+
+                        .highlightOne {
+                            font-size: 12px;
+                            margin-bottom: 1rem;
+
+                            span {
+                                color: #f7b500;
+                            }
+                        }
+                        .highlightTwo {
+                            color: #444;
+                            font-size: 16px;
+                            font-weight: 500;
+                            line-height: 25px;
+                        }
+                    }
+                }
+
+                .about {
+                    padding: 2em;
+
+                    .content {
+                        width: 70%;
+
+                        h2 {
+                            color: #333;
+                            font-weight: 400;
+                            line-height: 45px;
+                        }
+                    }
+
+                    .profile {
+                        display: flex;
+                        gap: 1em;
+
+                        img {
+                            border-radius: 50%;
+                        }
+
+                        .profileInfo {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: start;
+                            gap: 4px;
+
+                            h5 {
+                                font-size: 16px;
+                                color: #333;
+                            }
+
+                            p {
+                                font-size: 13px;
+                                color: #444;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .carousel-indicators {
+                position: absolute;
+                bottom: 20px;
+                top: 50%;
+                left: 10%;
+                transform: translateX(-50%);
+                margin: 0;
+                width: fit-content;
+
+                button {
+                    width: 10px;
+                    height: 10px;
+                    background-color: #888;
+                    border-radius: 50%;
+                    border: none;
+                    opacity: 0.5;
+                }
+
+                .active {
+                    background-color: #f7b500;
+                    opacity: 1;
+                }
+            }
+        }   
+    }
+    .inputForm {
+        font-family: "Source Sans Pro", sans-serif;
+        line-height: 1.5;
+        background-color: #fff;
+        color: #333;
+        width: 40%;
+        padding: 2em 0em;
+
+        .form-main {
+            width: 75%;
+          .form {
+            border-bottom: 1px solid #333;
+            padding-bottom: 1.5em;
+          }
+            .section {
+                margin-bottom: 1.2rem;
+                display: grid;
+                align-items: center;
+            }
+
+            .input {
+                font-family: inherit;
+                font-size: inherit;
+                color: inherit;
+                border-radius: 7px;
+                padding: 0.4rem 1rem;
+                background-color: transparent;
+                border: none;
+                width: 100%;
+                box-sizing: border-box;
+                outline: 1px solid #d6d6d6;
+            }
+
+            .input:focus {
+                outline: 1px solid #555;
+            }
+
+            .input[type="submit"] {
+                cursor: pointer;
+                background-color: #fa393a;
+                font-size: 14px;
+                color: #fff;
+            }
+
+            .label {
+                background-color: #fff;
+                justify-self: start;
+                transition-property: transform, padding, font-size;
+                transition-duration: 0.3s;
+                margin: 0 1rem;
+                pointer-events: none;
+                color: #7b7b7b;
+                font-size: 12px;
+                display: flex;
+                align-items: center;
+                gap: 0.5em;
+            }
+
+            .label,
+            .input {
+                grid-column-start: 1;
+                grid-row-start: 1;
+            }
+
+            .input:focus~.label,
+            .input:not(:placeholder-shown)~.label {
+                transform: translateY(-100%);
+                font-size: 0.8rem;
+                padding-left: 0.2rem;
+                padding-right: 0.2rem;
+                color: #555;
+            }
+
+            .section ::placeholder {
+                color: transparent;
+            }
+
+            select {
+                width: 50%;
+                padding: 0.4rem 0rem;
+                border-radius: 8px;
+                color: #7b7b7b;
+                outline: none;
+                font-size: 12px;
+            }
+
+            .checkbox {
+                display: flex;
+                gap: 0.5em;
+                margin: 1em 0em;
+
+                p {
+                    font-size: 12px;
+                    margin: 0;
+                }
+            }
+        }
+        .AnotherLogin {
+            p {
+                font-size: 12px;
+                margin-bottom: .5em;
+            }
+            .icons {
+                display: flex; 
+                gap: .7em;
+                cursor: pointer;
+                i {
+                    border: 1px solid #d6d6d6;
+                    padding: 10px 25px;
+                    border-radius: 8px;
+                }
+            }
+            .icons i:hover {
+                border-color: #000;
+                color: #000;
+            }
+        }
+    }
+}

@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="side-nav" [class.closed]="isClosed">
+      <nav>
+        <div class="toggle-btn" (click)="toggleSidebar()">
+          <div class="logo-main" *ngIf="!isClosed">
+            <img src="../../../assets/image.png" alt="noimage" class="logo">
+            <span class="logo-name">SKILLRAT</span>
+          </div>
+          <i class="bi" [ngClass]="isClosed ? 'fas fa-solid fa-bars' : 'fas fa-chevron-left'"></i>
+        </div>
+        <div class="routerLinks-main">
+        <a href="#" *ngFor="let item of menuItems" [routerLink]="item.link">
+          <i [class]="item.Icon"></i>
+          <span *ngIf="!isClosed">{{ item.label }}</span>
+        </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+  

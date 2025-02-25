@@ -1,0 +1,43 @@
+<div class="aboutMain">
+    <div class="heading mb-5">
+      <h1>Here's what a few of our Indian customers have to say about us</h1>
+    </div>
+    <div class="aboutContainer">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner mb-4">
+          <div *ngFor="let item of testimonials; let i = index" class="carousel-item" [class.active]="i === 0" 
+              [ngStyle]="{'background-color': item.bgColor, 'padding': '50px', 'height': '350px'}">
+            <div class="d-block about">
+              <p>{{ item.text }}</p>
+              <div class="profile mt-4">
+                <img src="assets/image.png" alt="noimage" width="70px" height="70px">
+                <div class="info">
+                  <h4>{{ item.name }}</h4>
+                  <p>{{ item.company }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="carousel-indicators">
+          <button *ngFor="let item of testimonials; let i = index" type="button" 
+                  data-bs-target="#carouselExampleSlidesOnly" [attr.data-bs-slide-to]="i"
+                  [class.active]="i === 0"></button>
+        </div>
+      </div>
+  
+      <div class="content" [ngClass]="{'active': animateContent, 'visible': true}">
+        <div class="heading">
+          <h5>What they like about Zoho Inventory</h5>
+          <img src="assets/img.svg" alt="no image" width="30px">
+          <p>{{ activeContent }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="link mt-5">
+      <p>We Have <span>Happy Customers</span> Across the World<i
+          class="fa fa-angle-right fa-2xs icon"></i></p>
+    </div>
+  </div>
+  

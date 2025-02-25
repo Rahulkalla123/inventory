@@ -1,0 +1,118 @@
+.pricing-section {
+    text-align: center;
+    background: linear-gradient(to bottom, #fdece7 60%, #fff 40%);
+    padding: 50px 20px;
+  }
+  
+  .pricing-header {
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: bold;
+  
+    .highlight {
+      color: #c61b37;
+    }
+  }
+  
+  .pricing-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .pricing-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+  }
+  
+  .pricing-card h3 {
+    font-size: 18px;
+    color: gray;
+    text-align: start;
+  }
+  
+  .pricing-card h2 {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .pricing-card p {
+    font-size: 14px;
+    margin: 5px 0;
+    text-align: start;
+  }
+  
+  .btn {
+    background-color: #fcedee;
+    border: 1px solid #c61b37;
+    color: #c61b37;
+    padding: 8px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background 0.3s ease, color 0.3s ease;
+  
+    &:hover {
+      background: #c61b37;
+      color: white;
+    }
+  }
+
+  .getStarted :hover {
+    background: #c61b37;
+  }
+  
+  .popular {
+    border: 2px dashed #c61b37;
+  }
+  
+  .popular-btn {
+    background: #c61b37;
+    color: white;
+  }
+  
+  .badge {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    background: #ffcc80;
+    color: black;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 10px;
+  }
+  
+  .note {
+    font-size: 12px;
+    margin-top: 20px;
+    color: gray;
+  }
+  .link {
+    text-align: center;
+    display: inline-block;
+cursor: pointer;
+transition: color 0.3s ease-in-out;
+    p {
+      font-size: 18px;
+      color: #0f254e;
+      cursor: pointer;
+      span {
+        color:#03a9f5;
+      }
+      .icon {
+        color: #000;
+        margin: 10px;
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+  }
+  .link:hover .icon {
+    transform: translateX(10px);
+  }

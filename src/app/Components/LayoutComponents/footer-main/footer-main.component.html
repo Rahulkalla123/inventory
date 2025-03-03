@@ -1,0 +1,62 @@
+<div class="carousel-container">
+    <div class="carousel-left">
+      <div class="carousel-wrapper">
+      <div class="carousel-content" *ngFor="let slide of slides; let i = index" [class.active]="i === currentSlide" >
+        <div class="slide-content">
+            <div class="text-content">
+                <h1 style="font-size: 16px;">{{ slide.title }}</h1>
+                <p style="font-size: 13px; line-height: 1.6;">{{ slide.description }}</p>
+              </div>
+          <img [src]="slide.image" alt="Slide Image" class="slide-image" width="200px" />
+          
+        </div>
+      </div>
+      </div>
+      <button class="carousel-arrow" (click)="prevSlide()"><i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </button>
+      <!-- <button class="carousel-arrow" (click)="nextSlide()"><i class="fa fa-chevron-left" aria-hidden="true"></i>
+      </button> -->
+    </div>
+  
+    <div class="carousel-right">
+        <div class="section-main">
+      <div class="section">
+        <h3>OTHER ZOHO APPS</h3>
+        <ul>
+          <li>Accounting Software</li>
+          <li>Ecommerce Software</li>
+          <li>Subscription Billing</li>
+          <li>100% Free Invoicing Solution</li>
+          <li>Expense Reporting</li>
+          <li>Simple Online Payments</li>
+          <li>CRM & Other Apps</li>
+        </ul>
+      </div>
+      <div class="section">
+        <h3>HELP & SUPPORT</h3>
+        <ul>
+          <li>Contact Support</li>
+          <li>Help Documentation</li>
+          <li>Register for webinars</li>
+          <li>FAQ</li>
+        </ul>
+      </div>
+      <div class="section">
+        <h3>QUICK LINKS</h3>
+        <ul>
+          <li>Getting Started</li>
+          <li>Mobile apps</li>
+          <li>Add-ons</li>
+          <li>What's New?</li>
+        </ul>
+      </div>
+        </div>
+      <div class="contact-info">
+        <p>
+          You can directly talk to us every Monday to Friday 9:00 AM to 7:00 PM
+          <br />
+          Zoho Inventory India Helpline: <strong>18005726671</strong> (Toll Free)
+        </p>
+      </div>
+    </div>
+  </div>

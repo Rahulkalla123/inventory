@@ -13,10 +13,10 @@
 				</div>
 				<form class="form">
 					<div class="section">
-						<input class="inputemail" type="email" name="email" id="email" placeholder="Email address or Phone Number"
+						<input class="inputemail" type="email" name="email" id="email" [(ngModel)]="email" placeholder="Email address or Phone Number"
 							required />
 					</div>
-					<input class="input" type="submit" value="NEXT">
+					<input class="input" (click)="onSubmit()" type="submit" value="NEXT">
 				</form>
 			</div>
 			<div class="AnotherLogin">
@@ -28,8 +28,7 @@
 					<i class="fa-brands fa-x-twitter fa-1x" style="background-color: #444; color: #fff;"></i>
 					<i class="fa-brands fa-edge fa-1x"></i>
 				</div>
-				<p class="mt-4 signup">Don't have a Zoho account? <span style="color: blue; cursor: pointer;"
-						routerLink="/login">Sign up now</span></p>
+				<p class="mt-4 signup">Don't have a Zoho account? <span routerLink="/register" style="color: blue; cursor: pointer;">Signup now</span></p>
 			</div>
 		</div>
 		<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">

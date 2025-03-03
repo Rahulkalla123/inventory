@@ -1,0 +1,14 @@
+.announcement {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 40%;
+    }
+    h5 , p {
+        width: 40%;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+}

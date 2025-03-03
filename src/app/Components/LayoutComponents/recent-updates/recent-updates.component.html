@@ -1,0 +1,24 @@
+<div class="timeline-container">
+<div class="timeline">
+    <div class="timeline-item" *ngFor="let item of timelineData">
+      <div class="timeline-dot" [class.filled]="item.filled"></div>
+      <div class="timeline-content">
+        <p class="date">{{ item.date }}</p>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="help-section">
+    <div class="help-card">
+      <img src="assets/recent.png" alt="Help Resource" class="help-image" />
+      <h4>📘 HELP RESOURCES</h4>
+      <p>Want to understand how Zoho Inventory works?</p>
+      <p class="help-text">
+        Read our help resources to understand Zoho Inventory in-depth and how you can make the most of the features.
+      </p>
+      <a href="#" class="help-button">Visit Help Doc</a>
+    </div>
+  </div>
+</div>
+  

@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { AllAPIService } from '../../../service/all-api.service';
 
 @Component({
   selector: 'app-registration',
   standalone: true,
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule,RouterLink,FormsModule],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.scss'
 })
@@ -32,4 +34,24 @@ export class RegistrationComponent {
       bgColor: 'rgb(250, 230, 244)',
     },
   ];
-}
+  registerobj : any = {
+      "firstName": "",
+      "mobileNo": "",
+      "emailId": "",
+      "password": "",
+  }
+  authService = inject(AllAPIService);
+  router = inject(Router);
+  fb = inject(FormBuilder);
+
+  onRegister() {
+    this.authService.register(this.registerobj).subscribe(
+      () => {
+        alert('Registration successful!');
+        this.router.navigate(['/login']);
+      },
+      (error) => alert('Registration failed: ' + error.error.message)
+    );
+  }
+  }
+

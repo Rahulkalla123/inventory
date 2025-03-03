@@ -1,0 +1,100 @@
+.timeline-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 20px;
+    
+  }
+
+.timeline {
+    position: relative;
+    padding-left: 20px;
+    margin: 3em;
+    position: relative;
+  
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+      margin-bottom: 20px;
+  
+      .timeline-dot {
+        width: 12px;
+        height: 12px;
+        background-color: #ffffff;
+        border: 3px solid #007bff;
+        border-radius: 50%;
+        position: absolute;
+        left: -7px;
+        top: 5px;
+  
+        &.filled {
+          background-color: #007bff;
+        }
+      }
+  
+      .timeline-content {
+        padding-left: 2em;
+        max-width: 600px;
+        border-left: 1px solid #f1f1f1;
+  
+        .date {
+          color: #555;
+          font-size: 15px;
+        }
+  
+        h3 {
+          font-size: 22px;
+          color: #333;
+        }
+  
+        p {
+          font-size: 16px;
+          color: #000;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+  .help-section {
+    width: 35%;
+  }
+  
+  .help-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    float: right;
+    position: sticky;
+    top: 150px;
+    right: 50px;
+  
+    .help-image {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+  
+    h4 {
+      color: #007bff;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  
+    .help-text {
+      font-size: 14px;
+      color: #555;
+    }
+  
+    .help-button {
+      display: inline-block;
+      margin-top: 10px;
+      background: #007bff;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+}

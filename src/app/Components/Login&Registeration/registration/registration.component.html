@@ -30,8 +30,7 @@
               </ul>
               </div>
             </div>
-          </div>
-
+          </div>         
           <div class="carousel-item" style="background-color: #ffe5df; height: 100vh;">
             <div class="d-flex">
                 <div class="left-content">
@@ -62,27 +61,27 @@
          <div class="para ms-3">
              <p style="font-size: 32px;">Let's get started</p>
          </div>
-    <form class="form">
+    <form class="form" (submit)="onRegister()">
         <div class="section">
-          <input class="input" type="text" name="name" id="name" placeholder="Company name" required />
+          <input class="input" type="text" [(ngModel)]="registerobj.firstName" name="name" id="name" placeholder="Company name" required />
           <label class="label" for="name" html="name"><i class="fa-solid fa-building"></i>Company Name</label>
           <div class="error"></div>
         </div>
       
         <div class="section">
-          <input class="input" type="email" name="email" id="email" placeholder="Email address" required />
+          <input class="input" type="email" [(ngModel)]="registerobj.emailId" name="email" id="email" placeholder="Email address" required />
           <label class="label" for="email" html="email"><i class="fa-regular fa-envelope"></i>Email address</label>
           <div class="error"></div>
         </div>
 
         <div class="section">
-            <input class="input" type="tel" name="phone" id="phone" placeholder="Phone Number" required />
+            <input class="input" type="tel" [(ngModel)]="registerobj.mobileNo" name="phone" id="phone" placeholder="Phone Number" required />
             <label class="label" for="phone" html="Phone"><i class="fa-solid fa-phone"></i>Phone Number</label>
             <div class="error"></div>
           </div>
       
         <div class="section">
-          <input class="input" type="password" name="password" id="password" placeholder="Password" pattern=".{8,}" required />
+          <input class="input" type="password" [(ngModel)]="registerobj.password" name="password" id="password" placeholder="Password" pattern=".{8,}" required />
           <label class="label" for="password" html="password"><i class="fa-solid fa-thumbtack-slash"></i>Password</label>
           <div class="error"></div>
         </div>
@@ -92,7 +91,7 @@
             <option value="America">America</option>
             <option value="England">England</option>
             <option value="Srilanka">Srilanka</option>
-            <option value="Australia">Australia</option>
+            <option value="Australia">Australia</option>  
             <option value="Pakistan">Pakistan</option>
         </select>
         <select class="ms-4" name="country" id="City">

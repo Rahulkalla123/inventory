@@ -1,20 +1,97 @@
-<div class="container">
-    <div class="side-nav" [class.closed]="isClosed">
-      <nav>
-        <div class="toggle-btn" (click)="toggleSidebar()">
-          <div class="logo-main" *ngIf="!isClosed">
-            <img src="../../../assets/image.png" alt="noimage" class="logo">
-            <span class="logo-name">SKILLRAT</span>
-          </div>
-          <i class="bi" [ngClass]="isClosed ? 'fas fa-solid fa-bars' : 'fas fa-chevron-left'"></i>
-        </div>
-        <div class="routerLinks-main">
-        <a href="#" *ngFor="let item of menuItems" [routerLink]="item.link">
-          <i [class]="item.Icon"></i>
-          <span *ngIf="!isClosed">{{ item.label }}</span>
+<div class="containers">
+  <div class="side-nav" [class.closed]="isClosed">
+    <nav>
+      <div class="logo-main mb-3">
+        <img src="../../../assets/image.png" alt="noimage" class="logo" />
+        <span class="logo-name">Inventory</span>
+      </div>
+    </nav>
+      <div class="routerLinks-main">
+        <a routerLink="/layout/homemain" 
+           [class.active]="activeLink === 'home'" 
+           (click)="setActiveLink('home')">
+          <i class="fa fa-home"></i>
+          <span *ngIf="!isClosed">Home</span>
         </a>
+
+        <!-- Dropdown for Inventory -->
+        <div class="dropdown">
+          <a (click)="toggleDropdown('inventory')" 
+             [class.active]="activeLink === 'inventory'">
+            <i class="fa fa-shopping-cart"></i>
+            <span *ngIf="!isClosed">Inventory</span>
+            <i class="fa fa-chevron-right" *ngIf="!isClosed"></i>
+          </a>
+          <div class="dropdown-content" *ngIf="dropdownOpen === 'inventory'">
+            <a routerLink="/layout/item" (click)="setActiveLink('inventory')">Item</a>
+            <a routerLink="/layout/itemGroup" (click)="setActiveLink('inventory')">Item Groups</a>
+            <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('inventory')">Inventory Adjustments</a>
+          </div>
         </div>
-      </nav>
+        <div class="dropdown">
+        <a
+           [class.active]="activeLink === 'sales'" 
+           (click)="toggleDropdown('sales')">
+          <i class="fa fa-shopping-cart"></i>
+          <span *ngIf="!isClosed">Sales</span>
+          <i class="fa fa-chevron-right" *ngIf="!isClosed"></i>
+        </a>
+        <div class="dropdown-content" *ngIf="dropdownOpen === 'sales'">
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Customers</a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Sales orders</a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Packages</a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Shipments</a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Delivery Challans</a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Invoice</a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Payment Received</a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Sales Returns</a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Credit Returns</a>
+
+
+        </div>
+        </div>
+        <div class="dropdown">
+        <a 
+           [class.active]="activeLink === 'purchases'" 
+           (click)="toggleDropdown('purchases')">
+          <i class="fa fa-shopping-bag"></i>
+          <span *ngIf="!isClosed">Purchases</span>
+          <i class="fa fa-chevron-right" *ngIf="!isClosed"></i>
+        </a>
+        <div class="dropdown-content" *ngIf="dropdownOpen === 'purchases'">
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Vendor</a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Expences</a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Purchase Orders</a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Purchase Recieves</a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Bills</a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Payment Mode</a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Vendor Credits</a>
+        </div>
+        </div>
+        <a routerLink="/layout/inventoryAdjustment" 
+           [class.active]="activeLink === 'integrations'" 
+           (click)="setActiveLink('integrations')">
+          <i class="fa fa-plug"></i>
+          <span *ngIf="!isClosed">Integrations</span>
+        </a>
+
+        <a routerLink="/layout/inventoryAdjustment" 
+           [class.active]="activeLink === 'reports'" 
+           (click)="setActiveLink('reports')">
+          <i class="fa fa-signal"></i>
+          <span *ngIf="!isClosed">Reports</span>
+        </a>
+
+        <a routerLink="/layout/inventoryAdjustment" 
+           [class.active]="activeLink === 'documents'" 
+           (click)="setActiveLink('documents')">
+          <i class="fa fa-file"></i>
+          <span *ngIf="!isClosed">Documents</span>
+        </a>
+      </div>
+    
+    <div class="toggle-btn" (click)="toggleSidebar()">
+      <i class="fas" [ngClass]="isClosed ? 'fa-chevron-right' : 'fa-chevron-left'"></i>
     </div>
   </div>
-  
+</div>

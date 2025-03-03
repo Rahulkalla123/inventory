@@ -1,0 +1,95 @@
+.dashboardMain {
+  padding-top: 10px;
+  transition: margin-top 0.3s;
+}
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3em;
+    padding: 2em;
+    font-family: Arial, sans-serif;
+  }
+  
+  .sales-activity, .inventory-summary {
+    background: #fff;
+    border-radius: 8px;
+    flex: 0 0 auto;
+    border: 1px solid #ebeaf2;
+    h5 {
+        border-bottom: 1px solid #ebeaf2;
+        padding: 0.5em;
+        font-size: 20px;
+        background-color: #f9f9fb;
+    }
+  }
+  
+  .sales-activity {
+    width: 65%;
+  }
+  
+  .inventory-summary {
+    width: 25%;
+  }
+  
+  h3 {
+    background: #f8f9fa;
+    padding: 10px;
+    margin: 0 -15px 10px;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .activity-grid {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .box {
+    text-align: center;
+    flex: 1;
+    border-right: 1px solid #ddd;
+  }
+  
+  .box:last-child {
+    border-right: none;
+  }
+  
+  .qty {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .blue { color: #408dfb; }
+  .red { color: #f7525a; }
+  .green { color: rgba(34,179,120); }
+  .yellow { color: #ddb630; }
+
+  .Qty {
+    color: #8d99ae;
+  }
+  .toBe {
+    color: #495569;
+    font-size: 12px
+  }
+  
+  .inventory-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 12px;
+  }
+  
+  .value {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .span {
+    color: #777;
+    font-size: 13px;
+  }
+
+.inventory-summary-two {
+  width: 50%;
+}
+.inventory-main {
+    width: 60%;
+    border-right: 1px solid #ebeaf2;
+}

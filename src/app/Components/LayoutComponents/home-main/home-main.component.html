@@ -1,1 +1,48 @@
-<p>home-main works!</p>
+<div class="mainContainer">
+  <div class="navDiv">
+  <app-navbar/>
+  </div>
+  <div class="scroll-container">
+    <div class="userMain">
+      <div class="userContent">
+        <div class="profile">
+          <img src="assets/image.png" alt="no image" width="50px">
+          <div class="name">
+            <h5 class="m-0">hello, K Rahul</h5>
+            <p class="m-0">Juvarya Tecnologies</p>
+          </div>
+        </div>
+        <div class="helpline">
+          <p class="m-0 one">skillRat Inventory India Helpline: <span>0987654321</span></p>
+          <p class="m-0 two">Mon-fri .9:00AM-7:00PM .Toll Free</p>
+        </div>
+      </div>
+      <div class="links">
+        <ul>
+          <li [ngClass]="{ 'active-link': activeIndex === 0 }" 
+          (click)="setActive(0)">  
+            <a routerLink="/layout/homemain/dashboardMain" routerLinkActive="active-link">Dashboard</a>
+          </li>
+          <li [ngClass]="{ 'active-link': activeIndex === 1 }"
+          (click)="setActive(1)"> 
+            <a routerLink="/layout/homemain/gettingStarted" routerLinkActive="active-link">Getting Started</a>
+          </li>
+          <li 
+            [ngClass]="{ 'active-link': activeIndex === 2 }" 
+            (click)="setActive(2)">
+           <a routerLink="/layout/homemain/announcement" routerLinkActive="active-link">Announcements</a>  
+          </li>
+          <li 
+            [ngClass]="{ 'active-link': activeIndex === 3 }" 
+            (click)="setActive(3)">
+           <a routerLink="/layout/homemain/recentUpdates" routerLinkActive="active-link">Recent Updates</a>  
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="routeroutlet">
+    <router-outlet/>
+    <app-footer-main/>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+.carousel-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    border-top: 1px dotted #ebeaf2;
+    background-color: #fff;
+  }
+  .carousel-left {
+    position: relative;
+    width: 30%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .carousel-content {
+    display: none;
+    transition: 0.5s ease-in-out;
+  }
+  .carousel-content.active {
+    display: block;
+  }
+  .slide-content {
+    max-width: 400px;
+  }
+  .slide-image {
+    width: 75%;
+    border-radius: 16px;
+  }
+  .text-content {
+    margin-top: 20px;
+  }
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  p {
+    color: #6b7280;
+  }
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #9ca3af;
+    cursor: pointer;
+    background-color: #ebeaf2;
+  }
+  .carousel-arrow.left {
+    left: -30px;
+  }
+  .carousel-arrow.right {
+    right: -30px;
+  }
+  .carousel-right {
+    width: 70%;
+    padding-left: 50px;
+    background-color: #fff;
+  }
+  .section-main {
+    display: flex;
+    justify-content: start;
+    gap: 4em;
+  }
+  .section {
+    margin-bottom: 30px;
+  }
+  .section h3 {
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    font-size: 13px;
+  }
+  .section ul {
+    list-style: none;
+    padding: 0;
+  }
+  .section li {
+    margin: 5px 0;
+    color: #374151;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .section li:hover {
+    color: #2563eb;
+  }
+  .contact-info {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+  }
+  .contact-info strong {
+    color: #2563eb;
+  }

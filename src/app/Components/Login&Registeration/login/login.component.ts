@@ -1,14 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms'
+import { routes } from '../../../app.routes';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule,RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  email : any
+
   testimonials = [
     {
       name: 'Passwordless sign-in',
@@ -21,4 +26,16 @@ export class LoginComponent {
       imgage: 'assets/image.png'
     },
   ];
+
+  router = inject(Router)
+  onSubmit() {
+    debugger
+    if(this.email === 'skillrat@gmail.com') {
+      alert('login Successfull')
+      this.router.navigateByUrl('/layout')
+    }
+    else {
+      alert('email not registered')
+    }
+  }
 }

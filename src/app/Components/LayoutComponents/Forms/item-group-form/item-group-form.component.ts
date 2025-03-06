@@ -1,16 +1,13 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-item',
+  selector: 'app-item-group-form',
   standalone: true,
-  imports: [CommonModule,RouterLink],
-  templateUrl: './item.component.html',
-  styleUrl: './item.component.scss'
+  imports: [],
+  templateUrl: './item-group-form.component.html',
+  styleUrl: './item-group-form.component.scss'
 })
-export class ItemComponent {
-  
+export class ItemGroupFormComponent {
   onFileSelected(event: any) {
     const files = event.target.files;
     if (files.length > 15) {
@@ -19,5 +16,4 @@ export class ItemComponent {
       console.log("Selected files:", files);
     }
   }
-
 }

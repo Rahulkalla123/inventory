@@ -1,15 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule,RouterLink,MatTooltipModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent {
+export class DashboardComponent  {
+
   isClosed = false;
   activeLink = 'home';
   dropdownOpen: string | null = null;
@@ -21,7 +24,7 @@ export class DashboardComponent {
 
   setActiveLink(link: string) {
     this.activeLink = link;
-    this.dropdownOpen = null; 
+    // this.dropdownOpen = null; 
   }
 
   toggleDropdown(dropdown: string) {

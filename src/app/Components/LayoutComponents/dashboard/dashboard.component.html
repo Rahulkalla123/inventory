@@ -10,7 +10,7 @@
         <a routerLink="/layout/homemain" 
            [class.active]="activeLink === 'home'" 
            (click)="setActiveLink('home')">
-          <i class="fa fa-home"></i>
+          <i class="fa fa-home" matTooltip="Home"></i>
           <span *ngIf="!isClosed">Home</span>
         </a>
 
@@ -23,9 +23,10 @@
             <i class="fa fa-chevron-right" *ngIf="!isClosed"></i>
           </a>
           <div class="dropdown-content" *ngIf="dropdownOpen === 'inventory'">
-            <a routerLink="/layout/item" (click)="setActiveLink('inventory')">Item</a>
-            <a routerLink="/layout/itemGroup" (click)="setActiveLink('inventory')">Item Groups</a>
-            <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('inventory')">Inventory Adjustments</a>
+            <a routerLink="/layout/item" (click)="setActiveLink('inventory')">Item <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+            <a routerLink="/layout/itemGroup" (click)="setActiveLink('inventory')">Item Groups <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+            <a routerLink="/layout/priceList" (click)="setActiveLink('inventory')">Price Lists <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+            <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('inventory')">Inventory Adjustments <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
           </div>
         </div>
         <div class="dropdown">
@@ -37,15 +38,15 @@
           <i class="fa fa-chevron-right" *ngIf="!isClosed"></i>
         </a>
         <div class="dropdown-content" *ngIf="dropdownOpen === 'sales'">
-          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Customers</a>
-          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Sales orders</a>
-          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Packages</a>
-          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Shipments</a>
-          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Delivery Challans</a>
-          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Invoice</a>
-          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Payment Received</a>
-          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Sales Returns</a>
-          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Credit Returns</a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Customers <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Sales orders <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Packages <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Shipments <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Delivery Challans <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Invoice <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Payment Received <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Sales Returns <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Credit Returns <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
 
 
         </div>
@@ -59,13 +60,13 @@
           <i class="fa fa-chevron-right" *ngIf="!isClosed"></i>
         </a>
         <div class="dropdown-content" *ngIf="dropdownOpen === 'purchases'">
-          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Vendor</a>
-          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Expences</a>
-          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Purchase Orders</a>
-          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Purchase Recieves</a>
-          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Bills</a>
-          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Payment Mode</a>
-          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Vendor Credits</a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Vendor <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Expences <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Purchase Orders <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Purchase Recieves <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Bills <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Payment Mode <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
+          <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Vendor Credits <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
         </div>
         </div>
         <a routerLink="/layout/inventoryAdjustment" 

@@ -4,7 +4,7 @@
   margin: 0;
 
   .side-nav {
-    width: 200px;
+    width: 170px;
     background: #1a1e36;
     height: 100vh;
     transition: width 0.3s ease-in-out;
@@ -15,7 +15,7 @@
   }
 
   .side-nav.closed {
-    width: 60px;
+    width: 40px;
   }
 
   nav {
@@ -52,13 +52,16 @@
       padding: 10px 15px;
       color: white;
       text-decoration: none;
-      font-size: 0.9em;
+      font-size: 10px;
       transition: background 0.3s;
       position: relative;
       cursor: pointer;
 
       i {
         margin-right: 10px;
+      }
+      span {
+        font-size: 10px;
       }
 
       &:hover {
@@ -84,10 +87,19 @@
         flex-direction: column;
         background: #111428;
         a {
-          padding-left: 70px;
+          padding-left: 35px;
           color: white;
+          display: flex;
+          justify-content: space-between;
+          transition: .5ms ease-in-out;
+          .actions {
+            visibility: hidden;
+          }
           &:hover {
             background-color: #0d6efd;
+          }
+          &:hover .actions {
+            visibility: visible;
           }
         }
       }
@@ -106,4 +118,12 @@
       font-size: 1.5em;
     }
   }
+}
+
+
+.actions {
+  visibility: hidden;
+}
+tr:hover .actions {
+  visibility: visible;
 }

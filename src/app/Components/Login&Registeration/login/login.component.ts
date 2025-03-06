@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms'
-import { routes } from '../../../app.routes';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -29,7 +28,6 @@ export class LoginComponent {
 
   router = inject(Router)
   onSubmit() {
-    debugger
     if(this.email === 'skillrat@gmail.com') {
       alert('login Successfull')
       this.router.navigateByUrl('/layout')

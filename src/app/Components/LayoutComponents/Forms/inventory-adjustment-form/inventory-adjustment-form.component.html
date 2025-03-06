@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="header">
+        <h1>All Items</h1>
+        <button class="new-button" routerLink="/layout/itemForm">+ New</button>
+    </div>
+
+    <div class="content">
+        <div class="type d-flex mb-4">
+            <label for="type-radio-1">Mode of adjustment</label>
+            <div class="radio">
+                <input type="radio" name="type" id="type-radio-1" checked> Quantity Adjustment
+                <input type="radio" name="type" id="type-radio-2"> Value Adjustment
+            </div>
+        </div>
+        <div class="name d-flex align-items-center mb-4">
+            <label for="name">Reference Number</label>
+            <input type="number" name="name" id="name" class="form-control">
+        </div>
+        <div class="name d-flex align-items-center mb-4">
+            <label for="name">Date*</label>
+            <input type="date" name="name" id="name" class="form-control">
+        </div>
+        <div class="name d-flex align-items-center mb-4">
+            <label for="name">Account</label>
+            <input type="number" name="name" id="name" class="form-control">
+        </div>
+        <div class="name d-flex align-items-center mb-4">
+            <label for="name">Reason</label>
+            <input type="text" name="name" id="name" class="form-control">
+        </div>
+        <div class="form-groups mb-4 d-flex two align-items-start mb-4">
+            <label>Description</label>
+            <textarea rows="2" style="min-height: 20px; width: 30%;"
+                class="ember-text-area ember-view form-control input"></textarea>
+        </div>
+    </div>
+</div>

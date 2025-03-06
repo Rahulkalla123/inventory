@@ -16,7 +16,7 @@
 						<input class="inputemail" type="email" name="email" id="email" [(ngModel)]="email" placeholder="Email address or Phone Number"
 							required />
 					</div>
-					<input class="input" (click)="onSubmit()" type="submit" value="NEXT">
+					<input class="input" [ngStyle]="{background : !email ? '#A0D2FF' : '#159AFF'}" [disabled]="!email" (click)="onSubmit()" type="submit" value="NEXT">
 				</form>
 			</div>
 			<div class="AnotherLogin">

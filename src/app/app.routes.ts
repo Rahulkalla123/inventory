@@ -11,6 +11,11 @@ import { RecentUpdatesComponent } from './Components/LayoutComponents/recent-upd
 import { ItemComponent } from './Components/LayoutComponents/inventory/item/item.component';
 import { InventoryAdjustmentsComponent } from './Components/LayoutComponents/inventory/inventory-adjustments/inventory-adjustments.component';
 import { ItemGroupsComponent } from './Components/LayoutComponents/inventory/item-groups/item-groups.component';
+import { ItemFormComponent } from './Components/LayoutComponents/Forms/item-form/item-form.component';
+import { ItemGroupFormComponent } from './Components/LayoutComponents/Forms/item-group-form/item-group-form.component';
+import { PriceListComponent } from './Components/LayoutComponents/inventory/price-list/price-list.component';
+import { PriceListFormComponent } from './Components/LayoutComponents/Forms/price-list-form/price-list-form.component';
+import { InventoryAdjustmentFormComponent } from './Components/LayoutComponents/Forms/inventory-adjustment-form/inventory-adjustment-form.component';
 
 export const routes: Routes = [
     {
@@ -78,7 +83,26 @@ export const routes: Routes = [
             path: 'inventoryAdjustment',
             component: InventoryAdjustmentsComponent
           },
-          
+          {
+            path: 'itemForm',
+            component: ItemFormComponent
+          },
+          {
+            path: 'itemFormGroup',
+            component: ItemGroupFormComponent
+          },
+          {
+            path: 'priceList',
+            component: PriceListComponent
+          },
+          {
+            path: 'priceListForm',
+            component: PriceListFormComponent
+          },
+          {
+            path: 'inventoryAdjustmentForm',
+            component: InventoryAdjustmentFormComponent
+          },
         ]
       },
 ];

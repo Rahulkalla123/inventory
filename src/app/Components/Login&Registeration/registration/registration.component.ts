@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormsModule } from '@angular/forms';
+import {  FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AllAPIService } from '../../../service/all-api.service';
 
@@ -42,7 +42,6 @@ export class RegistrationComponent {
   }
   authService = inject(AllAPIService);
   router = inject(Router);
-  fb = inject(FormBuilder);
 
   onRegister() {
     this.authService.register(this.registerobj).subscribe(

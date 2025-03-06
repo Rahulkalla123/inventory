@@ -1,0 +1,65 @@
+<div class="formMain">
+<div class="header">
+  <h1>All Items</h1>
+  <a routerLink="/layout/itemForm"><i class="fa fa-times"></i></a>
+</div>
+<div class="containers">
+  <div class="inputFieldsMain">
+    <div class="form-group type-group mb-4">
+      <label>Type</label>
+      <div class="radio-group">
+        <input type="radio" id="goods" name="type" value="goods" checked />
+        <label for="goods">Goods</label>
+        <input type="radio"  id="service" name="type" value="service" />
+        <label for="service">Service</label>
+      </div>
+    </div>
+  
+    <div class="form-groups mb-4">
+      <label for="name" class="required">Item Group<br> Name*</label>
+      <input type="text" name="name" id="name" class="form-control input"/>
+    </div>
+  
+    <div class="form-groups mb-4 two align-items-start">
+      <label>Description</label>
+      <textarea rows="3" style="min-height: 120px;" class="ember-text-area ember-view form-control input"></textarea>
+    </div>
+    <div class="inputSubMain d-flex" style="width: 100%;">
+      <div class="inputSubContainer" style="width: 50%;">
+      <div class="form-groups mb-4">
+      <label class="label">Unit*</label>
+      <select class="form-control">
+        <option>Select or type to add</option>
+      </select>
+    </div>
+  
+      <div class="form-groups mb-4">
+        <label class="label">Manufacturer</label>
+        <select class="form-control">
+          <option>Select or Add Manufacturer...</option>
+        </select>
+      </div>
+  
+    <div class="form-groups mb-4">
+      <label class="label">Inventory Valuation</label>
+      <select class="form-control">
+        <option>FIFO (First In First Out)</option>
+      </select>
+    </div>
+      </div>
+      <div class="form-groups" style="width: 50%;">
+        <label style="width: 40%; text-align: center;">Brand</label>
+        <select class="form-control">
+          <option>Select or Add Brand</option>
+        </select>
+      </div>
+    </div>
+  </div>
+    <div class="file-upload">
+        <input type="file" id="fileUpload" (change)="onFileSelected($event)" multiple>
+        <label class="imageUpload" for="fileUpload">Drag image(s) here<br> or <br><span>Browse images</span></label>
+        <p>You can add up to 15 images, each not exceeding 5 MB.</p>
+    </div>
+  </div>
+</div>
+  

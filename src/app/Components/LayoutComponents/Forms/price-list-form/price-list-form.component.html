@@ -1,0 +1,63 @@
+
+<div class="formMain">
+    <div class="header">
+        <h1>New Price List</h1>
+        <a routerLink="/layout/itemForm"><i class="fa fa-times"></i></a>
+      </div>
+      <div class="containers">
+        <div class="form-groups mb-4">
+            <label for="name" class="required">Name*</label>
+            <input type="text" name="name" id="name" class="form-control input"/>
+          </div>
+          <div class="form-group type-group mb-4">
+            <label>Transaction Type</label>
+            <div class="radio-group">
+              <input type="radio" id="goods" name="type" value="goods" checked />
+              <label for="goods">sales</label>
+              <input type="radio"  id="service" name="type" value="service" />
+              <label for="service">Purchase</label>
+            </div>
+          </div>
+          <div class="form-group type-group mb-4">
+            <label>Price List Type</label>
+            <div class="radio-group">
+              <input type="radio" id="goods" name="type" value="goods" checked />
+              <label for="goods">All Items <p>Mark up or mark down the rates of all items</p></label>
+              <input type="radio"  id="service" name="type" value="service" />
+              <label for="service">Purchase <p>Customize the rate of each item</p></label>
+            </div>
+          </div>
+          <div class="form-groups mb-4 two align-items-start">
+            <label>Description</label>
+            <textarea rows="3" style="min-height: 60px;" class="ember-text-area ember-view form-control input"></textarea>
+          </div>
+          <div class="form-groups mb-4">
+            <label class="required">Percentage</label>
+            <input type="text" class="form-control input"/>
+          </div>
+          <div class="form-groups mb-4">
+            <label class="required">Round Off TO*</label>
+            <input type="text" class="form-control input"/>
+          </div>
+          <div class="form-groups mb-4">
+            <label class="required">Round Off TO*</label>
+            <input type="text" class="form-control input"/>
+          </div>
+          <div class="form-groups mb-4">
+            <label class="required">Round Off TO*</label>
+            <input type="text" class="form-control input"/>
+          </div>
+          <div class="form-groups mb-4">
+            <label class="required">Round Off TO*</label>
+            <input type="text" class="form-control input"/>
+          </div>
+          <div class="form-groups mb-4">
+            <label class="required">Round Off TO*</label>
+            <input type="text" class="form-control input"/>
+          </div>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-primary">save</button>
+        <button class="btn">cancel</button>
+      </div>
+</div>

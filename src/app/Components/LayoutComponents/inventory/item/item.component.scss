@@ -1,0 +1,51 @@
+.navbar {
+    margin-top: 5em;
+    padding: 10px 2em;
+}
+
+.form-inline a {
+    text-decoration: none;
+}
+
+.buttonMain {
+    display: flex;
+    gap: 1em;
+}
+
+.btn {
+    background-color: #0d6efd;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #fff;
+    font-size: .6rem;
+}
+
+.iconsize .listicon {
+    border: 1px solid #c6c6c6;
+    padding: 12px 5px;
+    background-color: #e1e1e1;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.iconsize .listlarge {
+    border: 1px solid #c6c6c6;
+    padding: 12px 5px;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.menu {
+    border: 1px solid #c6c6c6;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+table {
+    th {
+        font-size: 10px;
+        color: #6c7184;
+    }
+    td {
+        font-size: 12px;
+    }
+}

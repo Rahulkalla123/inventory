@@ -150,6 +150,12 @@
                     text-indent: 10px;
                     width: 100%;
                 }
+                .error {
+                    text-align: center;
+                    small {
+                        color: red;
+                    }
+                }
             }
             .input {
                 background-color: #159AFF;

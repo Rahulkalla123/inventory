@@ -11,12 +11,24 @@
 					<h4>Sign In</h4>
 					<p >to access Inventory</p>
 				</div>
-				<form class="form">
+				<form class="form" [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
 					<div class="section">
-						<input class="inputemail" type="email" name="email" id="email" [(ngModel)]="email" placeholder="Email address or Phone Number"
-							required />
+						<input class="inputemail" type="email" name="email" id="email" formControlName="Email" placeholder="Email address or Phone Number"
+							required/>
+						<div class="error" *ngIf="f['Email'].invalid && f['Email'].errors && (f['Email'].touched || submitted)">
+							<small *ngIf="f['Email'].errors['required']">Email is required.</small>
+							<small *ngIf="f['Email'].errors['email']">Invalid email format.</small>
+						</div>
 					</div>
-					<input class="input" [ngStyle]="{background : !email ? '#A0D2FF' : '#159AFF'}" [disabled]="!email" (click)="onSubmit()" type="submit" value="NEXT">
+					<div class="section">
+						<input class="inputemail" type="password" name="password" id="password" formControlName="Password" placeholder="Enter a Password"
+							required/>
+							<div class="error" *ngIf="f['Password'].invalid && f['Password'].errors && (f['Password'].touched || submitted)">
+								<small *ngIf="f['Password'].errors['required'] && f['Password'].touched">Password is required.</small>
+								<small *ngIf="f['Password'].errors['minlength']">Must be at least 6 characters.</small>
+							</div>
+					</div>
+					<input class="input" [ngStyle]="{background : LoginForm.invalid ? '#A0D2FF' : '#159AFF'}" [disabled]="LoginForm.invalid" type="submit">
 				</form>
 			</div>
 			<div class="AnotherLogin">

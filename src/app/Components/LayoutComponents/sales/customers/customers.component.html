@@ -1,1 +1,148 @@
-<p>customers works!</p>
+
+
+<div class="formMain">
+  <div class="header">
+      <h1>New Price List</h1>
+      <a routerLink="/layout/itemForm"><i class="fa fa-times"></i></a>
+    </div>
+    <div class="containers">
+      <div class="form-group type-group mb-4">
+        <label>Customer Type</label>
+        <div class="radio-group">
+          <input type="radio" id="goods" name="type" value="goods" checked />
+          <label for="goods" style="width: 10%;">Business
+          </label>
+          <input type="radio"  id="service" name="type" value="service" />
+          <label for="service">Individual</label>
+        </div>
+      </div>
+      <div class="form-groups mb-4">
+          <label for="name" class="required">Primary Contact</label>
+          <input type="text" placeholder="Salutation" name="name" id="name" class="form-control input name"/>
+          <input type="text" placeholder="First Name" name="name" id="name" class="form-control input name ms-3"/>
+          <input type="text" placeholder="Last Name" name="name" id="name" class="form-control input name ms-3"/>
+        </div>
+      <div class="form-groups mb-4">
+          <label class="required">Company Name</label>
+          <input type="text" class="form-control input"/>
+        </div>
+        <div class="form-groups mb-4">
+          <label class="required">Customer Display <br>Name</label>
+          <input type="text" class="form-control input"/>
+        </div>
+        <div class="form-groups mb-4">
+          <label class="required">Customer Email</label>
+          <input type="text" class="form-control input"/>
+        </div>
+        <div class="form-groups mb-4">
+          <label class="required">Customer Phone</label>
+          <input type="tel" placeholder="Work Phone" class="form-control input num"/>
+          <input type="tel" placeholder="Mobile" class="form-control input num ms-4"/>
+        </div>
+        <div class="customer-details-links">
+          <div class="links-heading mb-3">
+            <a [ngClass]="{ 'active-link': activeIndex === 0 }" 
+            (click)="setActive(0,'details')">Other Details</a>
+            <a [ngClass]="{ 'active-link': activeIndex === 1 }" 
+            (click)="setActive(1,'address')">Address</a>
+            <a [ngClass]="{ 'active-link': activeIndex === 2 }" 
+            (click)="setActive(2, 'contact')">Contact Persons</a>
+            <a [ngClass]="{ 'active-link': activeIndex === 3 }" 
+            (click)="setActive(3,'customFields')">Custom Fields</a>
+            <a [ngClass]="{ 'active-link': activeIndex === 4 }" 
+            (click)="setActive(4, 'reportingTabs')">Reporting Tags</a>
+            <a [ngClass]="{ 'active-link': activeIndex === 5 }" 
+            (click)="setActive(5,'remarks')">Remarks</a>
+          </div>
+          <div class="links-content">
+            <ng-container *ngIf="selectedTab === 'details'" class="content">
+              <div class="form-groups mb-4">
+                  <label class="required">Pan</label>
+                  <input type="text" class="form-control input"/>
+                </div>
+                <div class="form-groups mb-4">
+                  <label class="required">Currency</label>
+                  <input type="text" class="form-control input"/>
+                </div>
+                <div class="form-groups mb-4">
+                  <label class="required">Payment Terms</label>
+                  <input type="text" class="form-control input"/>
+                </div>
+                <div class="form-groups mb-4">
+                  <label class="required">Price List</label>
+                  <input type="text" class="form-control input"/>
+                </div>
+                <div class="form-groups">
+                  <label class="required">Document</label>
+                  <input type="file" name="file" id="file" class="input-file">
+                  <label for="file" class="btn js-labelFile">
+                    <i class="icon fa fa-check"></i>
+                    <span class="js-fileName">Choose a file</span>
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  </label>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="selectedTab === 'address'" class="content">
+              <div class="col-lg-10 row">
+                <div class="col-lg-6">
+                  <div class="form-groups mb-4">
+                    <label class="required">Pan</label>
+                    <input type="text" class="form-control input"/>
+                  </div>
+                  <div class="form-groups mb-4">
+                    <label class="required">Currency</label>
+                    <input type="text" class="form-control input"/>
+                  </div>
+                  <div class="form-groups mb-4">
+                    <label class="required">Payment Terms</label>
+                    <input type="text" class="form-control input"/>
+                  </div>
+                  <div class="form-groups mb-4">
+                    <label class="required">Price List</label>
+                    <input type="text" class="form-control input"/>
+                  </div>
+                </div> 
+                <div class="col-lg-6">
+                  <div class="form-groups mb-4">
+                    <label class="required">Pan</label>
+                    <input type="text" class="form-control input"/>
+                  </div>
+                  <div class="form-groups mb-4">
+                    <label class="required">Currency</label>
+                    <input type="text" class="form-control input"/>
+                  </div>
+                  <div class="form-groups mb-4">
+                    <label class="required">Payment Terms</label>
+                    <input type="text" class="form-control input"/>
+                  </div>
+                  <div class="form-groups mb-4">
+                    <label class="required">Price List</label>
+                    <input type="text" class="form-control input"/>
+                  </div>
+                </div> 
+              </div>
+            </ng-container>
+            <ng-container *ngIf="selectedTab === 'contact'" class="content">
+              <h2>contact Information</h2>
+              <p>This is the details section.</p>
+            </ng-container>
+            <ng-container *ngIf="selectedTab === 'customFields'" class="content">
+              <h2>custom fields Information</h2>
+              <p>This is the details section.</p>
+            </ng-container>
+            <ng-container *ngIf="selectedTab === 'reportingTabs'" class="content">
+              <h2>reportingtabs Information</h2>
+              <p>This is the details section.</p>
+            </ng-container>
+            <ng-container *ngIf="selectedTab === 'remarks'" class="content">
+              <h2>remarks Information</h2>
+              <p>This is the details section.</p>
+            </ng-container>
+          </div>
+        </div>
+    </div>
+    <div class="buttons p-3">
+      <button class="btn btn-primary ms-3">Save</button>
+      <button class="btn btns ms-3">Cancel</button>
+  </div>
+</div>

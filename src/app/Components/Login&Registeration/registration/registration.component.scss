@@ -152,6 +152,12 @@
                 display: grid;
                 align-items: center;
             }
+            .error {
+                text-align: center;
+                small {
+                    color: red;
+                }
+            }
 
             .input {
                 font-family: inherit;
@@ -171,12 +177,10 @@
             }
 
             .input[type="submit"] {
-                cursor: pointer;
                 background-color: #fa393a;
                 font-size: 14px;
                 color: #fff;
             }
-
             .label {
                 background-color: #fff;
                 justify-self: start;

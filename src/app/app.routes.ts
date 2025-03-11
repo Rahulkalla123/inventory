@@ -16,6 +16,7 @@ import { ItemGroupFormComponent } from './Components/LayoutComponents/Forms/item
 import { PriceListComponent } from './Components/LayoutComponents/inventory/price-list/price-list.component';
 import { PriceListFormComponent } from './Components/LayoutComponents/Forms/price-list-form/price-list-form.component';
 import { InventoryAdjustmentFormComponent } from './Components/LayoutComponents/Forms/inventory-adjustment-form/inventory-adjustment-form.component';
+import { CustomersComponent } from './Components/LayoutComponents/sales/customers/customers.component';
 
 export const routes: Routes = [
     {
@@ -102,6 +103,10 @@ export const routes: Routes = [
           {
             path: 'inventoryAdjustmentForm',
             component: InventoryAdjustmentFormComponent
+          },
+          {
+            path: 'customerForm',
+            component: CustomersComponent
           },
         ]
       },

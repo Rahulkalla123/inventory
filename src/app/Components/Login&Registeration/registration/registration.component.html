@@ -61,29 +61,41 @@
          <div class="para ms-3">
              <p style="font-size: 32px;">Let's get started</p>
          </div>
-    <form class="form" (submit)="onRegister()">
+    <form class="form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
         <div class="section">
-          <input class="input" type="text" [(ngModel)]="registerobj.firstName" name="name" id="name" placeholder="Company name" required />
+          <input class="input" type="text" formControlName="CompanyName" name="name" id="name" placeholder="Company name" required />
           <label class="label" for="name" html="name"><i class="fa-solid fa-building"></i>Company Name</label>
-          <div class="error"></div>
+          <div class="error" *ngIf="f['CompanyName'].invalid && f['CompanyName'].errors && (f['CompanyName'].touched || submitted)">
+            <small *ngIf="f['CompanyName'].errors['required']">Company Name is Required</small>
+            <small *ngIf="f['CompanyName'].errors['minlength']">Must be at least 3 characters.</small>
+          </div>
         </div>
       
         <div class="section">
-          <input class="input" type="email" [(ngModel)]="registerobj.emailId" name="email" id="email" placeholder="Email address" required />
+          <input class="input" type="email" formControlName="Email" name="email" id="email" placeholder="Email address" required />
           <label class="label" for="email" html="email"><i class="fa-regular fa-envelope"></i>Email address</label>
-          <div class="error"></div>
+          <div class="error" *ngIf="f['Email'].invalid && f['Email'].errors && (f['Email'].touched || submitted)">
+            <small *ngIf="f['Email'].errors['required']">Email is required.</small>
+            <small *ngIf="f['Email'].errors['email']">Invalid email format.</small>
+          </div>
         </div>
 
         <div class="section">
-            <input class="input" type="tel" [(ngModel)]="registerobj.mobileNo" name="phone" id="phone" placeholder="Phone Number" required />
+            <input class="input" type="tel" formControlName="Number" name="phone" id="phone" placeholder="Phone Number" required />
             <label class="label" for="phone" html="Phone"><i class="fa-solid fa-phone"></i>Phone Number</label>
-            <div class="error"></div>
+            <div class="error" *ngIf="f['Number'].invalid && f['Number'].errors && (f['Number'].touched || submitted)">
+              <small *ngIf="f['Number'].errors['required']">Phone Number is required.</small>
+              <small *ngIf="f['Number'].errors['minlength']">Enter a Valid Phone Number</small>
+            </div>
           </div>
       
         <div class="section">
-          <input class="input" type="password" [(ngModel)]="registerobj.password" name="password" id="password" placeholder="Password" pattern=".{8,}" required />
+          <input class="input" type="password" formControlName="Password" name="password" id="password" placeholder="Password" required />
           <label class="label" for="password" html="password"><i class="fa-solid fa-thumbtack-slash"></i>Password</label>
-          <div class="error"></div>
+          <div class="error" *ngIf="f['Password'].invalid && f['Password'].errors && (f['Password'].touched || submitted)">
+            <small *ngIf="f['Password'].errors['required'] && f['Password'].touched">Password is required.</small>
+            <small *ngIf="f['Password'].errors['minlength']">Must be at least 6 characters.</small>
+          </div>
         </div>
         <div class="dropdown d-flex">
         <select name="country" id="country">
@@ -109,7 +121,7 @@
         <p>I Agree to the term and services and privacy policy</p>
       </div>
       
-        <input class="input" type="submit" value="Create Your Account">
+        <button class="input" [ngStyle]="{background : registrationForm.invalid ? 'rgb(246 171 171)' : '#fa393a'}"  [disabled]="registrationForm.invalid" type="submit" value="Create Your Account">Create Your Account</button>
       </form>
     </div>
     <div class="AnotherLogin">

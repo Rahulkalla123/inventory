@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FooterMainComponent } from "../footer-main/footer-main.component";
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { DashboardMainComponent } from "../dashboard-main/dashboard-main.component";
 import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({

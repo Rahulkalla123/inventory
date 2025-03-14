@@ -17,6 +17,9 @@ import { PriceListComponent } from './Components/LayoutComponents/inventory/pric
 import { PriceListFormComponent } from './Components/LayoutComponents/Forms/price-list-form/price-list-form.component';
 import { InventoryAdjustmentFormComponent } from './Components/LayoutComponents/Forms/inventory-adjustment-form/inventory-adjustment-form.component';
 import { CustomersComponent } from './Components/LayoutComponents/sales/customers/customers.component';
+import { authGuard } from './guard/auth.guard';
+import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { noAuthGuard } from './guard/no-auth.guard';
 
 export const routes: Routes = [
     {
@@ -27,18 +30,23 @@ export const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
+        canActivate: [noAuthGuard]
       },
       {
         path: 'register',
         component: RegistrationComponent,
+        canActivate: [noAuthGuard]
       },
       {
         path: 'login',
         component: LoginComponent,
+        canActivate: [noAuthGuard]
       },
       {
         path: 'layout',
+        canActivate: [authGuard],
         component: LayoutComponent,
+        
         children: [
           {
           path: '',
@@ -109,5 +117,9 @@ export const routes: Routes = [
             component: CustomersComponent
           },
         ]
+      },
+      {
+        path: '**',
+        component: PageNotFoundComponent,
       },
 ];

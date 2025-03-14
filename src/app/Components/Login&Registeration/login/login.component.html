@@ -11,24 +11,28 @@
 					<h4>Sign In</h4>
 					<p >to access Inventory</p>
 				</div>
-				<form class="form" [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+				<form class="form" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
 					<div class="section">
-						<input class="inputemail" type="email" name="email" id="email" formControlName="Email" placeholder="Email address or Phone Number"
+						<input class="inputemail" type="email" name="email" id="email" [(ngModel)]="loginobj.Email" #Email="ngModel" placeholder="Email address or Phone Number"
 							required/>
-						<div class="error" *ngIf="f['Email'].invalid && f['Email'].errors && (f['Email'].touched || submitted)">
-							<small *ngIf="f['Email'].errors['required']">Email is required.</small>
-							<small *ngIf="f['Email'].errors['email']">Invalid email format.</small>
+						<div class="error" *ngIf="Email.invalid && Email.touched">
+							<small *ngIf="Email.errors?.['required']">Email is required.</small>
+							<small *ngIf="Email.errors?.['email']">Invalid email format.</small>
 						</div>
 					</div>
 					<div class="section">
-						<input class="inputemail" type="password" name="password" id="password" formControlName="Password" placeholder="Enter a Password"
+						<input class="inputemail" type="password" name="password" [(ngModel)]="loginobj.Password" minlength="6" #Password="ngModel" id="password" placeholder="Enter a Password"
 							required/>
-							<div class="error" *ngIf="f['Password'].invalid && f['Password'].errors && (f['Password'].touched || submitted)">
-								<small *ngIf="f['Password'].errors['required'] && f['Password'].touched">Password is required.</small>
-								<small *ngIf="f['Password'].errors['minlength']">Must be at least 6 characters.</small>
+							<div class="error" *ngIf="Password.invalid && Password.touched">
+								<small *ngIf="Password.errors?.['required'] && Password.touched">Password is required.</small>
+								<small *ngIf="Password.errors?.['minlength']">Must be at least 6 characters.</small>
 							</div>
 					</div>
-					<input class="input" [ngStyle]="{background : LoginForm.invalid ? '#A0D2FF' : '#159AFF'}" [disabled]="LoginForm.invalid" type="submit">
+					<button class="input" [ngStyle]="{background : !loginForm.valid ? '#A0D2FF' : '#159AFF'}" [disabled]="isLoading" [disabled]="!loginForm.valid" type="submit">
+						<span *ngIf="!isLoading">Submit</span>
+						<span *ngIf="isLoading">
+						  <i class="fa fa-spinner fa-spin"></i>
+						</span></button>
 				</form>
 			</div>
 			<div class="AnotherLogin">

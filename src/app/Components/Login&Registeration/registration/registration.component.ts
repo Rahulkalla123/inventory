@@ -1,17 +1,17 @@
-import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
-import {  FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
+import {  Router, RouterLink } from '@angular/router';
 import { AllAPIService } from '../../../service/all-api.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-registration',
   standalone: true,
-  imports: [CommonModule,RouterLink,FormsModule,ReactiveFormsModule],
+  imports: [RouterLink,FormsModule,CommonModule],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.scss'
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent  {
   testimonials = [
     {
       text: 'With Zoho Inventory, you can actually organize your business.',
@@ -34,55 +34,47 @@ export class RegistrationComponent implements OnInit {
       bgColor: 'rgb(250, 230, 244)',
     },
   ];
-  authService = inject(AllAPIService);
-  router = inject(Router);
-  fb = inject(FormBuilder);
 
-  registrationForm! : FormGroup ;
-  submitted = false;
+  isLoading = false;
 
-  ngOnInit() {
-    this.initializeForm();
-  }
-
-  initializeForm() {
-    this.registrationForm = this.fb.group({
-      CompanyName:['',[Validators.required,Validators.minLength(3)]],
-      Email      :['',[Validators.required,Validators.email,]],
-      Number     :['',[Validators.required,Validators.maxLength(10),Validators.minLength(10)]],
-      Password   :['',[Validators.required,Validators.minLength(6)]]
-    })
-  }
-
-  get f() { return this.registrationForm.controls; }
-
-  onSubmit() {
-    this.submitted = true;
-
-    if(this.registrationForm.invalid) {
-      return;
-    }
-
-    this.authService.register(this.registrationForm.value).subscribe({
-      next: (res: any) => {
-        this.registrationForm.reset();
-        this.submitted = false;
-        console.log(res);
-        alert('Registration Successful Please Login');
-        this.router.navigate(['/login']);
-      },
-      error: (err) => {
-        console.log(err);
-        
-        if (err.error && err.error.message === "Email already exists") {
-          alert('Email already registered. Redirecting to login page...');
-          this.router.navigate(['/login']);
-        } else {
-          alert('Something went wrong. Please try again later.');
-        }
-      }
-    })
+  registerObj = {
+    CompanyName: "",
+    Email: "",
+    Number: "",
+    Password: ""
   }
  
+  service = inject(AllAPIService);
+  route = inject(Router);
+
+  onSubmit(form: NgForm) {
+    if(!form.valid) {
+      alert('Please fill all the required fields');
+      return;
+    }
+    this.isLoading = true; 
+    this.service.register(this.registerObj).subscribe({
+      next: (data) => {
+        if(data.status ===  200) {
+          console.log('userData', data);
+          this.isLoading = false; 
+          alert(data.message);
+        }      
+      },
+      error: (error) => {
+        console.log('error',error);
+        if(error.status === 400) {
+          this.isLoading = false; 
+          confirm(error.error.message + 'Do you want to Login?');
+          this.route.navigate(['/login']);
+        }
+        if(error.status === 204 || error.status === 200){
+          this.isLoading = false; 
+          alert('Register successfully');
+          this.route.navigate(['/login']);
+        }
+      },
+    })
+ }
 }
 

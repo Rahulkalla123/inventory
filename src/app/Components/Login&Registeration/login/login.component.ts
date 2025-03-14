@@ -1,18 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms'
+import { Component, inject } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms'
 import { Router, RouterLink } from '@angular/router';
 import { AllAPIService } from '../../../service/all-api.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule,FormsModule,RouterLink,ReactiveFormsModule],
+  imports: [FormsModule,RouterLink,CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent implements OnInit{
-  email : any
+export class LoginComponent {
+  isLoading = false;
 
   testimonials = [
     {
@@ -27,45 +27,41 @@ export class LoginComponent implements OnInit{
     },
   ];
 
-  router = inject(Router)
-  fb = inject(FormBuilder);
-  authAPI = inject(AllAPIService)
-
-  LoginForm! : FormGroup;
-  submitted = false;
-
-  ngOnInit() {
-    this.initializeForm();
+  loginobj =  {
+    Email: "",
+    Password: ""
   }
 
-  initializeForm() {
-    this.LoginForm = this.fb.group({
-      Email      :['',[Validators.required,Validators.email,]],
-      Password   :['',[Validators.required,Validators.minLength(6)]]
-    })
-  }
+  service = inject(AllAPIService);
+  route   = inject(Router);
 
-  get f() { return this.LoginForm.controls; }
-
-  onSubmit() {
-    this.submitted = true;
-
-    if(this.LoginForm.invalid) {
-        return
+  onSubmit(form: NgForm) {
+    if(!form.valid) {
+      alert('Please fill all the required fields')
+      return;
     }
-
-    this.authAPI.login(this.LoginForm.value).subscribe({
-      next: (res: any) => {
-        console.log(res);
-        if(res.success) {
-          localStorage.setItem('accessToken', res.accessToken);
-          localStorage.setItem('refreshToken', res.refreshToken);
-          this.router.navigate(['/layout']);
+    this.isLoading = true;
+    this.service.login(this.loginobj).subscribe({
+      next: (data) => {
+        if(data.statusCode === 200) {
+          console.log('userData',data)
+          localStorage.setItem('AccessToken',data.accessToken);
+          localStorage.setItem('RefreshToken',data.refreshToken);
+          this.isLoading = false;
+          this.route.navigate(['/layout']);
         }
       },
-      error: (err) => {
-        console.log(err);
+      error: (error) => {
+        console.log('loginError',error);
+        if(error.status === 401) {
+          this.isLoading = false
+          alert(error.error.message);
+        }
+      },
+      complete: () => {
+        console.log('Login completed')
+        this.isLoading = false;
       }
     })
-   }
+  }
 }

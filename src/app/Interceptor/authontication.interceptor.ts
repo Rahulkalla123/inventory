@@ -15,7 +15,6 @@ export const authonticationInterceptor: HttpInterceptorFn =  (req: HttpRequest<a
 
   return next(authReq).pipe(  // Use next(authReq) instead of next.handle(authReq)
     catchError(error => {
-      debugger
       // If Unauthorized (401), try to refresh token
       if (error instanceof HttpErrorResponse && error.status === 401) {
         if (!isRefreshing) {

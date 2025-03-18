@@ -1,51 +1,116 @@
 .navbar {
-    margin-top: 5em;
-    padding: 10px 2em;
+  margin-top: 5em;
+  padding: 10px 2em;
 }
 
 .form-inline a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .buttonMain {
-    display: flex;
-    gap: 1em;
+  display: flex;
+  gap: 1em;
 }
 
 .btn {
-    background-color: #0d6efd;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: #fff;
-    font-size: .6rem;
+  background-color: #0d6efd;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+  font-size: .6rem;
+}
+
+.iconsize a {
+  cursor: pointer;
 }
 
 .iconsize .listicon {
-    border: 1px solid #c6c6c6;
-    padding: 12px 5px;
-    background-color: #e1e1e1;
-    border-radius: 5px 0px 0px 5px;
+  border: 1px solid #c6c6c6;
+  padding: 12px 5px;
+  transition: 0.3s;
+  border-radius: 5px 0px 0px 5px;
+  color: #333;
+}
+.iconsize .listlarge {
+  border-radius: 0px 5px 5px 0px;
+  border: 1px solid #c6c6c6;
+  color: #333;
+  padding: 12px 5px;
 }
 
-.iconsize .listlarge {
-    border: 1px solid #c6c6c6;
-    padding: 12px 5px;
-    border-radius: 0px 5px 5px 0px;
+.iconsize a.active i {
+  background-color: #e1e1e1;
+  color: #333;
+  cursor: default;
+  border-color: #c6c6c6;
 }
 
 .menu {
-    border: 1px solid #c6c6c6;
-    padding: 5px 10px;
-    border-radius: 5px;
+  border: 1px solid #c6c6c6;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
-table {
-    th {
-        font-size: 10px;
-        color: #6c7184;
-    }
-    td {
-        font-size: 12px;
-    }
+.table-container {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-top: 10px;
+  padding: 0em 2em;
+}
+
+.table-container table {
+  width: 100%;
+  font-size: 12px;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 0em 2em;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.card {
+  text-align: center;
+  padding: 20px;
+  min-height: 260px;
+  transition: all 250ms cubic-bezier(.02,.01,.47,1);
+  box-shadow: 0 0 30px rgba(219, 219, 219, .5);
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.card input[type='checkbox'] {
+  position: absolute;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+
+.item-image {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.item-name {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.item-sku {
+  color: #6c757d;
+  font-size: 13px;
+}
+
+.item-price {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.item-price span {
+  color: #6c7184;
 }

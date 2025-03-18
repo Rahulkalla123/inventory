@@ -20,7 +20,6 @@ export class HomeMainComponent implements OnInit {
   userDetails: any = [];
 
   private service = inject(AllAPIService);
-  private router = inject(Router);
 
   constructor(@Inject(PLATFORM_ID) private platformId: any) {}
 
@@ -33,27 +32,32 @@ export class HomeMainComponent implements OnInit {
   }
 
   GetUserDetails() {
-    // Check if running in browser before accessing localStorage
     if (isPlatformBrowser(this.platformId)) {
       const token = localStorage.getItem('AccessToken');
       if (!token) {
         console.log("No token found. Skipping user details API call.");
         return;
       }
-      this.service.getUserDetails().subscribe({
-        next: (res) => {
-          this.userDetails = res.user;
-          console.log(this.userDetails);
-        },
-        error: (error) => {
-          console.log(error);
-        },
-        complete: () => {
-          console.log('getUserDetails completed');
-        }
-      });
+  
+      // Check if user data is already available in BehaviorSubject
+      const storedUser = this.service.getStoredUserDetails();
+      if (storedUser) {
+        this.userDetails = storedUser; // Use stored data
+        console.log("Using stored user details:", this.userDetails);
+      } else {
+        // Only call API if user data is not available
+        this.service.getUserDetails().subscribe({
+          next: (res) => {
+            this.userDetails = res.user;
+            console.log("User Details Fetched:", this.userDetails);
+          },
+          error: (error) => {
+            console.log("Error fetching user details:", error);
+          }
+        });
+      }
     } else {
       console.warn("localStorage is not available on the server.");
     }
-  }
+}
 }

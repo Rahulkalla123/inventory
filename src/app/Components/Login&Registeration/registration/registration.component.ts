@@ -55,9 +55,10 @@ export class RegistrationComponent  {
     this.isLoading = true; 
     this.service.register(this.registerObj).subscribe({
       next: (data) => {
-        if(data.status ===  200) {
+        if(data.statusCode ===  200) {
           console.log('userData', data);
           this.isLoading = false; 
+          this.route.navigate(['/login']);
           alert(data.message);
         }      
       },

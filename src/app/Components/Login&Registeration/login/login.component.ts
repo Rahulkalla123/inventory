@@ -43,12 +43,16 @@ export class LoginComponent {
     this.isLoading = true;
     this.service.login(this.loginobj).subscribe({
       next: (data) => {
-        if(data.statusCode === 200) {
+        if(data.statusCode === 200 && data.success === true) {
           console.log('userData',data)
           localStorage.setItem('AccessToken',data.accessToken);
           localStorage.setItem('RefreshToken',data.refreshToken);
           this.isLoading = false;
           this.route.navigate(['/layout']);
+        }
+        if(data.success === false) {
+          this.isLoading = false;
+          alert(data.message);
         }
       },
       error: (error) => {

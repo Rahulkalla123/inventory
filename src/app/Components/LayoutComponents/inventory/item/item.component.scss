@@ -9,7 +9,50 @@
 
 .buttonMain {
   display: flex;
-  gap: 1em;
+  gap: 1em;.item-details {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 20px;
+
+  h2 {
+    margin-top: 0;
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+}
+
+/* Image Upload Box */
+.image-upload {
+  margin-top: 20px;
+  .image-box {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    border: 2px dashed #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    p {
+      margin-top: 10px;
+      font-size: 14px;
+      span {
+        color: #007bff;
+        cursor: pointer;
+      }
+    }
+    &:hover {
+      border-color: #007bff;
+    }
+  }
+  small {
+    display: block;
+    margin-top: 5px;
+    color: #888;
+  }
+}
+
 }
 
 .btn {
@@ -74,6 +117,9 @@
   overflow-y: auto;
 }
 
+.checkBox {
+  display: none;
+}
 .card {
   text-align: center;
   padding: 20px;
@@ -82,6 +128,18 @@
   box-shadow: 0 0 30px rgba(219, 219, 219, .5);
   position: relative;
   border: 1px solid transparent;
+  transition: border 0.3s ease-in-out;
+}
+.card:hover {
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  .checkBox {
+    display: block;
+  }
+}
+
+.card-body {
+cursor: pointer;
 }
 
 .card input[type='checkbox'] {
@@ -113,4 +171,8 @@
 
 .item-price span {
   color: #6c7184;
+}
+
+tr {
+  cursor: pointer;
 }

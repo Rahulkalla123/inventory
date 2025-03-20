@@ -57,6 +57,8 @@ export class LoginComponent {
       },
       error: (error) => {
         console.log('loginError',error);
+        this.isLoading = false;
+        alert('somthing went wrong try again later');
         if(error.status === 401) {
           this.isLoading = false
           alert(error.error.message);

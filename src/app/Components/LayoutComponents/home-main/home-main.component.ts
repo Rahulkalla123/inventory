@@ -1,7 +1,7 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Component, Inject, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { FooterMainComponent } from "../footer-main/footer-main.component";
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import {  RouterLink, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { AllAPIService } from '../../../service/all-api.service';
 

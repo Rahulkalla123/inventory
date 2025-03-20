@@ -135,4 +135,41 @@
     .name {
       gap: 1.2em;
     }
+  }.custom-tooltip .mat-tooltip {
+    background-color: #007bff; /* Tooltip background color */
+    color: #fff; /* Text color */
+    font-size: 8px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    max-width: 200px;
+    white-space: nowrap;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Optional: Tooltip Arrow Customization */
+  .custom-tooltip .mat-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #007bff transparent;
+  }
+  
+  /* Tooltip Animation (Optional) */
+  .custom-tooltip .mat-tooltip {
+    animation: fadeIn 0.2s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }

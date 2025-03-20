@@ -20,6 +20,7 @@ import { CustomersComponent } from './Components/LayoutComponents/sales/customer
 import { authGuard } from './guard/auth.guard';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { noAuthGuard } from './guard/no-auth.guard';
+import { ItemDetailsComponent } from './Components/LayoutComponents/inventory/item-details/item-details.component';
 
 export const routes: Routes = [
     {
@@ -116,6 +117,9 @@ export const routes: Routes = [
             path: 'customerForm',
             component: CustomersComponent
           },
+          { path: 'item-details/:id',
+            component: ItemDetailsComponent
+          }
         ]
       },
       {

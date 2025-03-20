@@ -14,6 +14,7 @@ export class AllAPIService {
   private userDetailsSubject = new BehaviorSubject<any>(null);
   userDetails$ = this.userDetailsSubject.asObservable();
 
+
   constructor(private http: HttpClient) { }
 
   register(userData: any): Observable<any> {
@@ -28,11 +29,11 @@ export class AllAPIService {
     const RefreshToken = localStorage.getItem('RefreshToken');
     return this.http.post(`${this.apiUrl}/RefreshToken`, { RefreshToken });
   }
-
+  
   getUserDetails(): Observable<any> {
     return this.http.get<{ success: boolean; user: any }>(`${this.apiUrl}/GetCurrentUser`).pipe(
       tap(response => {
-        this.userDetailsSubject.next(response.user); 
+       localStorage.setItem('companyName', response.user.name)
       })
     );
   }
@@ -55,12 +56,15 @@ export class AllAPIService {
   addItems(itemData: any): Observable<any> {
     return this.http.post(`${this.userItemsUrl}`, itemData)
   }
-  
+
+  getItemById(id: string | null): Observable<any> {
+    return this.http.get(`${this.userItemsUrl}/${id}`);
+  }
 
   logout(): void {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
-    window.location.href = '/login';
+    window.location.href = '/home';
   }
 
 }

@@ -1,0 +1,108 @@
+   <div class="item-details-main d-flex">
+    <!-- Left Sidebar -->
+    <div class="left-content">
+      <nav class="navbars">
+        <div class="form-inline">
+          <a class="nav-link">ALL ITEMS <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+        </div>
+        <div class="buttonMain">
+          <button type="button" class="btn btn-primary" routerLink="/layout/itemForm">
+            <i class="fa fa-plus" aria-hidden="true"></i> NEW
+          </button>
+          <i class="fa fa-ellipsis-v menu" aria-hidden="true"></i>
+        </div>
+      </nav>
+      <div class="table-container">
+        <table class="table table-hover">
+          <tbody>
+            <tr *ngFor="let item of items" [class.active]="item.id === this.item?.id" (click)="loadItemFromList(item.id)">
+              <td class="d-flex align-items-center">
+                <input type="checkbox" class="me-2">
+                <span>{{ item.name }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    <!-- Right Content -->
+    <div class="item-details" *ngIf="item">
+      <h5>{{ item.name }}</h5>
+      <p style="font-size: 10px;">{{ item.sku}}</p>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active">Overview</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Transactions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">History</a>
+        </li>
+      </ul>
+      <div class="item-details-content d-flex" style="width: 100%;">
+        <div class="row" style="width: 70%;">
+          <div class="">
+            <div class="content d-flex">
+                <label style="width: 30%; font-size: 12px;">Item Type</label>
+                <p style="font-size: 12px;">{{ item.type }}</p>
+            </div>
+            <div class="content d-flex">
+                <label style="width: 30%; font-size: 12px;">SKU</label>
+                <p style="font-size: 12px;">{{ item.sku }}</p>
+            </div>
+            <div class="content d-flex">
+                <label style="width: 30%; font-size: 12px;">SAC</label>
+                <p style="font-size: 12px;">{{ item.type }}</p>
+            </div>
+            <div class="content d-flex">
+                <label style="width: 30%; font-size: 12px;">Unit</label>
+                <p style="font-size: 12px;">{{ item.unit }}</p>
+            </div>
+            <div class="content d-flex">
+                <label style="width: 30%; font-size: 12px;">UPC</label>
+                <p style="font-size: 12px;">{{ item.upc }}</p>
+            </div>
+            <div class="content d-flex">
+                <label style="width: 30%; font-size: 12px;">EAN</label>
+                <p style="font-size: 12px;">{{ item.ean }}</p>
+            </div>
+            <div class="content d-flex">
+                <label style="width: 30%; font-size: 12px;">ISBN</label>
+                <p style="font-size: 12px;">{{ item.isbn }}</p>
+            </div>
+            <div class="content d-flex">
+                <label style="width: 30%; font-size: 12px;">Created Source</label>
+                <p style="font-size: 12px;">user</p>
+            </div>
+          </div>
+          <div class="">
+            <p class="section-title">Tax</p>
+            <h6 class="section-title">Sales Information</h6>
+            <div class="content d-flex">
+                <label style="width: 30%; font-size: 12px;">Selling Price</label>
+                <p style="font-size: 12px;">{{ item.price }}</p>
+            </div>
+            <div class="content d-flex">
+                <label style="width: 30%; font-size: 12px;">Sales Account</label>
+                <p style="font-size: 12px;">{{ item.type }}</p>
+            </div>
+            <div class="content d-flex">
+                <label style="width: 30%; font-size: 12px;">Description</label>
+                <p style="font-size: 12px;">{{ item.description }}</p>
+            </div>
+          </div>
+        </div>
+        <!-- Image Upload Box -->
+        <div class="image-upload" style="width: 30%;">
+          <div class="image-box" (drop)="onFileDrop($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)">
+            <i class="fa fa-image"></i>
+            <p>Drag image(s) here<br />or <span (click)="triggerFileInput()">Browse images</span></p>
+            <input type="file" (change)="onFileSelected($event)" multiple accept="image/*" hidden #fileInput />
+          </div>
+          <small>You can add up to 15 images, each not exceeding 5 MB.</small>
+        </div>
+      </div>
+    </div>
+  </div>

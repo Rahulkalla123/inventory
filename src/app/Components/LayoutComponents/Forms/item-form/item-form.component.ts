@@ -2,16 +2,20 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AllAPIService } from '../../../../service/all-api.service';
 import { FormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 @Component({
   selector: 'app-item-form',
   standalone: true,
-  imports: [ RouterLink,FormsModule],
+  imports: [ RouterLink,FormsModule,MatTooltipModule],
   templateUrl: './item-form.component.html',
   styleUrl: './item-form.component.scss'
 })
 export class ItemFormComponent {
 
+  matTolltipMessage : string = "the item will be measured in terms of this unit (eg: kg,dozen)"
+  
   item = {
     name: '',
     description: '',
@@ -35,7 +39,6 @@ export class ItemFormComponent {
   }
 
   addItem() {
-    debugger
     this.service.addItems(this.item).subscribe({
       next: (data: any) => {
         console.log('itemData', data);

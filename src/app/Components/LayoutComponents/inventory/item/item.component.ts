@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AllAPIService } from '../../../../service/all-api.service';
+import { StoreResponceService } from '../../../../service/store-responce.service';
 
 @Component({
   selector: 'app-item',
@@ -16,8 +17,12 @@ export class ItemComponent implements OnInit{
   card : boolean = false;
  
   itemsData : any = [];
+  selectedItem: any = null;
+
 
   private service = inject(AllAPIService);
+  private dataService = inject(StoreResponceService);
+  private router = inject(Router);
   
   onFileSelected(event: any) {
     const files = event.target.files;
@@ -39,13 +44,23 @@ export class ItemComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.getItems();
+    this.loadItemsData(); 
+  }
+
+  loadItemsData() {
+    this.itemsData = this.dataService.getItemsData();
+  
+    if (!this.itemsData || this.itemsData.length === 0) {
+      console.log('Data not found. Fetching again...');
+      this.getItems();
+    }
   }
 
   getItems() {
     this.service.addItem().subscribe({
       next: (data : any) => {
-          this.itemsData = data;
+          this.itemsData = data.items;
+          this.dataService.setItemsData(data.items);
           console.log('itemData',data);
       },
       error: (error) => {
@@ -55,6 +70,10 @@ export class ItemComponent implements OnInit{
         console.log('API call completed');
       }
     })
+  }
+
+  goToItemDetails(itemId: number) {
+    this.router.navigate(['layout/item-details', itemId]);
   }
 
 }

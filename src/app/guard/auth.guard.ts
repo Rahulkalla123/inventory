@@ -42,7 +42,8 @@ export const authGuard: CanActivateFn = (route, state) => {
           error: () => {
             localStorage.removeItem('AccessToken');
             localStorage.removeItem('RefreshToken');
-            router.navigate(['/login']);
+            localStorage.removeItem('companyName');
+            router.navigate(['/home']);
             observer.next(false);
             observer.complete();
           }
@@ -52,7 +53,8 @@ export const authGuard: CanActivateFn = (route, state) => {
 
     localStorage.removeItem('AccessToken');
     localStorage.removeItem('RefreshToken');
-    router.navigate(['/login']);
+    localStorage.removeItem('companyName');
+    router.navigate(['/home']);
     return false;
   }
 

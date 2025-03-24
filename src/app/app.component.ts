@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AllAPIService } from './service/all-api.service';
 
 @Component({
   selector: 'app-root',

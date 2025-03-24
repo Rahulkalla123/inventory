@@ -9,8 +9,11 @@
       <div class="routerLinks-main">
         <a routerLink="/layout/homemain" 
            [class.active]="activeLink === 'home'" 
-           (click)="setActiveLink('home')">
-          <i class="fa fa-home" matTooltip="Home"></i>
+           (click)="setActiveLink('home')"
+           >
+          <i class="fa fa-home" 
+          [matTooltip]="isClosed ? 'Home':''" 
+          matTooltipPosition="right"></i>
           <span *ngIf="!isClosed">Home</span>
         </a>
 
@@ -18,9 +21,10 @@
         <div class="dropdown">
           <a (click)="toggleDropdown('inventory')" 
              [class.active]="activeLink === 'inventory'">
-            <i class="fa fa-shopping-cart"></i>
+            <i class="fa fa-shopping-cart" [matTooltip]="isClosed ? 'Inventory':''" 
+            matTooltipPosition="right"></i>
             <span *ngIf="!isClosed">Inventory</span>
-            <i class="fa fa-chevron-right" *ngIf="!isClosed"></i>
+            <i class="fa fa-chevron-right"  *ngIf="!isClosed"></i>
           </a>
           <div class="dropdown-content" *ngIf="dropdownOpen === 'inventory'">
             <a routerLink="/layout/item" (click)="setActiveLink('inventory')">Item <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
@@ -33,9 +37,10 @@
         <a
            [class.active]="activeLink === 'sales'" 
            (click)="toggleDropdown('sales')">
-          <i class="fa fa-shopping-cart"></i>
+          <i class="fa fa-shopping-cart" [matTooltip]="isClosed ? 'Sales':''" 
+          matTooltipPosition="right"></i>
           <span *ngIf="!isClosed">Sales</span>
-          <i class="fa fa-chevron-right" *ngIf="!isClosed"></i>
+          <i class="fa fa-chevron-right"  *ngIf="!isClosed"></i>
         </a>
         <div class="dropdown-content" *ngIf="dropdownOpen === 'sales'">
           <a routerLink="/layout/customerForm" (click)="setActiveLink('sales')">Customers <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
@@ -55,9 +60,10 @@
         <a 
            [class.active]="activeLink === 'purchases'" 
            (click)="toggleDropdown('purchases')">
-          <i class="fa fa-shopping-bag"></i>
+          <i class="fa fa-shopping-bag" [matTooltip]="isClosed ? 'Purchases':''" 
+          matTooltipPosition="right"></i>
           <span *ngIf="!isClosed">Purchases</span>
-          <i class="fa fa-chevron-right" *ngIf="!isClosed"></i>
+          <i class="fa fa-chevron-right"  *ngIf="!isClosed"></i>
         </a>
         <div class="dropdown-content" *ngIf="dropdownOpen === 'purchases'">
           <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('purchases')">Vendor <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
@@ -72,27 +78,30 @@
         <a routerLink="/layout/inventoryAdjustment" 
            [class.active]="activeLink === 'integrations'" 
            (click)="setActiveLink('integrations')">
-          <i class="fa fa-plug"></i>
+          <i class="fa fa-plug" [matTooltip]="isClosed ? 'Integrations':''" 
+          matTooltipPosition="right"></i>
           <span *ngIf="!isClosed">Integrations</span>
         </a>
 
         <a routerLink="/layout/inventoryAdjustment" 
            [class.active]="activeLink === 'reports'" 
            (click)="setActiveLink('reports')">
-          <i class="fa fa-signal"></i>
+          <i class="fa fa-signal" [matTooltip]="isClosed ? 'Reports':''" 
+          matTooltipPosition="right"></i>
           <span *ngIf="!isClosed">Reports</span>
         </a>
 
         <a routerLink="/layout/inventoryAdjustment" 
            [class.active]="activeLink === 'documents'" 
            (click)="setActiveLink('documents')">
-          <i class="fa fa-file"></i>
+          <i class="fa fa-file" [matTooltip]="isClosed ? 'Documents':''" 
+          matTooltipPosition="right"></i>
           <span *ngIf="!isClosed">Documents</span>
         </a>
       </div>
     
     <div class="toggle-btn" (click)="toggleSidebar()">
-      <i class="fas" [ngClass]="isClosed ? 'fa-chevron-right' : 'fa-chevron-left'"></i>
+      <i class="fas" [matTooltip]="isClosed ? 'open': 'close'" [ngClass]="isClosed ? 'fa-chevron-right' : 'fa-chevron-left'"></i>
     </div>
   </div>
 </div>

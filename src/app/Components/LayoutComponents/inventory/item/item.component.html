@@ -23,7 +23,7 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col" style="width: 10px;"><input type="checkbox"></th>
+            <th scope="col"><input type="checkbox"></th>
             <th scope="col">Name</th>
             <th scope="col">SKU</th>
             <th scope="col">TYPE</th>
@@ -32,9 +32,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of itemsData">
+          <tr *ngFor="let item of itemsData"
+          (click)="goToItemDetails(item.id)">
             <th scope="row"><input type="checkbox"></th>
-            <td>{{item.name}}</td>
+            <td><img src="assets/Kovela-logo.png" alt="no image" style="max-height: 20px; width: 40px;">{{item.name}}</td>
             <td>{{item.sku}}</td>
             <td>{{item.type}}</td>
             <td>{{item.description}}</td>
@@ -45,8 +46,8 @@
     </div>
   
     <div class="card-container" *ngIf="card">
-      <div class="card" *ngFor="let item of itemsData">
-        <input type="checkbox" />
+      <div class="card" *ngFor="let item of itemsData" (click)="goToItemDetails(item.id)">
+        <input type="checkbox" class="checkBox"/>
         <div class="card-body">
           <img src="assets/Kovela-logo.png" alt="no image" class="item-image" />
           <h5 class="item-name">{{ item.name }}</h5>

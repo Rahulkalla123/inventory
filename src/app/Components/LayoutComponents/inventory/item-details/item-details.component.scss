@@ -15,12 +15,46 @@
 
 .item-details {
   width: 75%;
-  padding: 2em;
+  padding:5px 2em;
   height: calc(100vh - 4em); // Full viewport height minus the top margin
   display: flex;
   flex-direction: column;
 }
+.items {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  border-bottom: 1px solid #ddd;
+}
+.item-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.links {
+  flex-direction: column;
+  background-color: #fff;
+}
 
+.dropDownLinks {
+  font-size: 12px;
+  border: none;
+  background-color: #fff;
+  text-align: left;
+    width: 100%;
+    cursor: pointer;
+    padding: 5px 15px;
+    transition: background-color 0.3s ease;
+}
+.dropDownLinks:hover {
+  background-color: #408dfb;
+  color: #333;
+  border-radius: 10px;
+}
+.dropDownLinks:focus {
+  outline: none;
+  background-color: #408dfb;
+}
 // Navbar (Left Sidebar Header)
 .navbars {
   display: flex;
@@ -29,7 +63,6 @@
   height: 60px;
   padding: 0 1em;
   background-color: #f8f7f7;
-  border-bottom: 1px solid #ddd;
 
   .nav-link {
     text-decoration: none;

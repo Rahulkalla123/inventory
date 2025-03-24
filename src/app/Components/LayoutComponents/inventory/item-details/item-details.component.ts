@@ -3,11 +3,13 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AllAPIService } from '../../../../service/all-api.service';
 import { CommonModule } from '@angular/common';
 import { StoreResponceService } from '../../../../service/store-responce.service';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-item-details',
   standalone: true,
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule,RouterLink,MatMenuModule,MatButtonModule],
   templateUrl: './item-details.component.html',
   styleUrl: './item-details.component.scss'
 })
@@ -86,5 +88,20 @@ export class ItemDetailsComponent {
 
   triggerFileInput() {
     this.fileInput.nativeElement.click();
+  }
+
+  deleteItem(itemId: number) {
+    if (confirm('Are you sure you want to delete this item?')) {
+      this.service.deleteItem(itemId).subscribe({
+        next: () => {
+          alert('Item deleted successfully');
+          this.loadItemsData();
+          this.router.navigate(['/layout/item']);
+        },
+        error: (error) => {
+          console.error('Error deleting item:', error);
+        },
+      });
+    }
   }
 }

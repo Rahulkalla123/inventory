@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import {  Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class AllAPIService {
 
   private userDetailsSubject = new BehaviorSubject<any>(null);
   userDetails$ = this.userDetailsSubject.asObservable();
+  
 
 
   constructor(private http: HttpClient) { }
@@ -22,12 +23,35 @@ export class AllAPIService {
   }
 
   login(userData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/Login`, userData);
+    return this.http.post(`${this.apiUrl}/Login`, userData).pipe(
+      tap((response: any) => {
+        this.storeTokens(response.accessToken, response.refreshToken);
+      })
+    );
   }
 
   refreshToken(): Observable<any> {
-    const RefreshToken = localStorage.getItem('RefreshToken');
-    return this.http.post(`${this.apiUrl}/RefreshToken`, { RefreshToken });
+    const refreshToken = localStorage.getItem('RefreshToken');
+    if (!refreshToken) {
+      console.warn('No refresh token found. Cannot refresh.');
+      return of(null);
+    }
+
+    return this.http
+      .post(`${this.apiUrl}/RefreshToken`, {
+        refreshToken: refreshToken,
+      })
+      .pipe(
+        tap((response: any) => {
+          if (response.accessToken && response.refreshToken) {
+            this.storeTokens(response.accessToken, response.refreshToken);
+          }
+        }),
+        catchError((error) => {
+          console.error('Refresh Token API error:', error);
+          return of(null);
+        })
+      );
   }
   
   getUserDetails(): Observable<any> {
@@ -46,7 +70,7 @@ export class AllAPIService {
   }
 
   isAuthenticated(): boolean {
-    return !!this.getAccessToken(); // Returns true if token exists
+    return !!this.getAccessToken(); 
   }
 
   addItem(): Observable<any> {
@@ -57,14 +81,41 @@ export class AllAPIService {
     return this.http.post(`${this.userItemsUrl}`, itemData)
   }
 
-  getItemById(id: string | null): Observable<any> {
+  getItemById(id: any | null): Observable<any> {
     return this.http.get(`${this.userItemsUrl}/${id}`);
+  }
+
+  updateItem(id:number , updatedItem: any) {
+  return this.http.put(`${this.userItemsUrl}/${id}`,updatedItem);
+  }
+
+  deleteItem(id: number) {
+    return this.http.delete(`${this.userItemsUrl}/${id}`)
+  }
+
+  private storeTokens(accessToken: string, refreshToken: string) {
+    localStorage.setItem('AccessToken', accessToken);
+    localStorage.setItem('RefreshToken', refreshToken);
   }
 
   logout(): void {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
+    localStorage.removeItem('companyName');
     window.location.href = '/home';
   }
+
+  ngOnInit(): void {
+    if (this.isAuthenticated()) {
+      this.getUserDetails().subscribe(
+        (response) => {
+          console.log('User auto-logged in', response);
+        },
+        (error) => {
+          console.error('Error fetching user details after login:', error);
+        }
+      );
+    }
+  }  
 
 }

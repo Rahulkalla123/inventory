@@ -24,7 +24,7 @@
                         matTooltipClass="custom-tooltip"
                         matTooltipPosition="right"
                         ></i></label>
-                    <input type="text" name="SKU" [(ngModel)]="item.SKU" id="SKU" class="form-control">
+                    <input type="text" name="SKU" [(ngModel)]="item.sku" id="SKU" class="form-control">
                 </div>
                 <div class="units d-flex align-items-center">
                     <label for="unit-select">Unit*
@@ -55,37 +55,57 @@
             <div class="inputtwo" style="width: 50%;">
                 <div class="dimension d-flex align-items-center mb-3">
                     <label for="Dimensions">Dimensions</label>
-                    <input type="text" name="Dimensions" id="Dimensions" class="form-control">
+                    <input type="text" name="Dimensions" id="Dimensions" [(ngModel)]="item.Dimensions" class="form-control">
                 </div>
                 <div class="dimension d-flex align-items-center mb-3">
                     <label for="Manufacturer">Manufacturer</label>
-                    <input type="text" name="Manufacturer" id="Manufacturer" class="form-control">
+                    <input type="text" name="Manufacturer" [(ngModel)]="item.Manufacturer" id="Manufacturer" class="form-control">
                 </div>
                 <div class="dimension align-items-center d-flex mb-3">
-                    <label for="upc">upc</label>
-                    <input type="text" name="upc" id="upc" class="form-control">
+                    <label for="upc">upc <i class="fa fa-question-circle"
+                        aria-hidden="true" 
+                        matTooltip="twelve digit unique number associated with the bar code (Universal product code)"
+                        matTooltipClass="custom-tooltip"
+                        matTooltipPosition="right"
+                        ></i></label>
+                    <input type="text" name="upc" id="upc" [(ngModel)]="item.upc" class="form-control">
                 </div>
                 <div class="dimension align-items-center d-flex mb-3">
-                    <label for="ean">EAN</label>
-                    <input type="text" name="ean" id="ean" class="form-control">
+                    <label for="ean">EAN <i class="fa fa-question-circle"
+                        aria-hidden="true" 
+                        matTooltip="thirteen digits unique number (International Artical Number)"
+                        matTooltipClass="custom-tooltip"
+                        matTooltipPosition="right"
+                        ></i></label>
+                    <input type="text" name="ean" id="ean" [(ngModel)]="item.EAN" class="form-control">
                 </div>
             </div>
             <div class="inputtwo align-items-center ms-5" style="width: 50%;">
                 <div class="dimension d-flex mb-3">
                     <label for="weight">Weight</label>
-                    <input type="text" name="weight" id="weight" class="form-control">
+                    <input type="text" name="weight" id="weight" [(ngModel)]="item.Weight" class="form-control">
                 </div>
                 <div class="dimension align-items-center d-flex mb-3">
                     <label for="brand">Brand</label>
-                    <input type="text" name="brand" id="brand" class="form-control">
+                    <input type="text" name="brand" id="brand"  [(ngModel)]="item.Brand" class="form-control">
                 </div>
                 <div class="dimension align-items-center d-flex mb-3">
-                    <label for="mpn">MPN </label>
-                    <input type="text" name="mpn" id="mpn" class="form-control">
+                    <label for="mpn">MPN  <i class="fa fa-question-circle"
+                        aria-hidden="true" 
+                        matTooltip="Manufacturing Part Number unambiguously identifies a part desgn"
+                        matTooltipClass="custom-tooltip"
+                        matTooltipPosition="right"
+                        ></i></label>
+                    <input type="text" name="mpn" id="mpn" [(ngModel)]="item.MPN" class="form-control">
                 </div>
                 <div class="dimension align-items-center d-flex mb-3">
-                    <label for="isbn">ISBN</label>
-                    <input type="text" name="isbn" id="isbn" class="form-control">
+                    <label for="isbn">ISBN  <i class="fa fa-question-circle"
+                        aria-hidden="true" 
+                        matTooltip="thirteen digits unique commercial book identifier (International standerd book number)"
+                        matTooltipClass="custom-tooltip"
+                        matTooltipPosition="right"
+                        ></i></label>
+                    <input type="text" name="isbn" id="isbn" [(ngModel)]="item.ISBN" class="form-control">
                 </div>
             </div>
 

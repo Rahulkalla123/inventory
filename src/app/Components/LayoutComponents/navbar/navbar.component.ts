@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AllAPIService } from '../../../service/all-api.service';
 
 @Component({
   selector: 'app-navbar',

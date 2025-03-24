@@ -49,20 +49,16 @@ export class LoginComponent {
           localStorage.setItem('RefreshToken',data.refreshToken);
           this.isLoading = false;
           this.route.navigate(['/layout']);
-        }
-        if(data.success === false) {
-          this.isLoading = false;
-          alert(data.message);
+        }else {
+          this.service.logout();
+          alert('Invalid credentials, please try again!')
         }
       },
       error: (error) => {
         console.log('loginError',error);
+        alert(error.error.message);
+        this.service.logout();
         this.isLoading = false;
-        alert('somthing went wrong try again later');
-        if(error.status === 401) {
-          this.isLoading = false
-          alert(error.error.message);
-        }
       },
       complete: () => {
         console.log('Login completed')

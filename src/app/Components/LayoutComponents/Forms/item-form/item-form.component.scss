@@ -27,7 +27,7 @@
 }
 
 .form-control {
-    width: 60%;
+    width: 55%;
     padding: 5px;
     margin: 5px 0;
     height: 30px;
@@ -82,8 +82,8 @@
     overflow-y: auto;
   }
   .inputFileds {
-    display: flex;
-    width: 70%;
+    // display: flex;
+    // width: 70%;
     .typeName {
         width: 70%;
         .type {
@@ -97,7 +97,7 @@
     }
   }
   label {
-    width: 24%;
+    width: 16%;
     font-size: 12px;
   }
   .inputtwo {
@@ -107,7 +107,7 @@
             width: 28%;
         }
         input {
-            width: 65%;
+            width: 100%;
         }
     }
     
@@ -126,15 +126,15 @@
   .salesPurchase {
     width: 70%;
     .salesMain {
-      width: 50%;
+      width: 97%;
      
     }
     .purchaseMain {
       width: 50%;
     }
-    .name {
-      gap: 1.2em;
-    }
+    // .name {
+    //   gap: 1.2em;
+    // }
   }.custom-tooltip .mat-tooltip {
     background-color: #007bff; /* Tooltip background color */
     color: #fff; /* Text color */

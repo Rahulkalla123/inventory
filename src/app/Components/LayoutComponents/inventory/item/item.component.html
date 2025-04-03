@@ -24,22 +24,22 @@
         <thead>
           <tr>
             <th scope="col"><input type="checkbox"></th>
-            <th scope="col">Name</th>
-            <th scope="col">SKU</th>
-            <th scope="col">TYPE</th>
-            <th scope="col">DESCRIPTION</th>
-            <th scope="col">RATE</th>
+            <th scope="col">ID</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">Contact Number</th>
+            <th scope="col">Course</th>
+            <th scope="col">Enqury Date</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of itemsData"
           (click)="goToItemDetails(item.id)">
             <th scope="row"><input type="checkbox"></th>
-            <td><img src="assets/Kovela-logo.png" alt="no image" style="max-height: 20px; width: 40px;">{{item.name}}</td>
-            <td>{{item.sku}}</td>
-            <td>{{item.type}}</td>
-            <td>{{item.description}}</td>
-            <td>{{item.price}}</td>
+            <td>{{item.id}}</td>    <!--student id -->
+            <td>{{item.name}}</td>  <!--student name -->
+            <td>{{item.mpn}}</td> <!--contact number -->
+            <td>{{item.manufacturer}}</td>  <!--student course -->
+            <td>{{item.price | date }}</td>
           </tr>
         </tbody>
       </table>
@@ -51,9 +51,9 @@
         <div class="card-body">
           <img src="assets/Kovela-logo.png" alt="no image" class="item-image" />
           <h5 class="item-name">{{ item.name }}</h5>
-          <p class="item-sku">SKU: {{ item.sku }}</p>
+          <p class="item-sku">contact: {{ item.mpn }}</p>
           <p class="item-price">
-            <span>Selling Price :</span> Rs.{{ item.price }}
+            <span>enquiry date :</span> Rs.{{ item.price | date }}
           </p>
         </div>
       </div>

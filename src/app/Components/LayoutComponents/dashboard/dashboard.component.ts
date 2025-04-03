@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AllAPIService } from '../../../service/all-api.service';
 
 
 @Component({
@@ -11,17 +12,19 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent  {
+export class DashboardComponent implements OnInit {
 
   isClosed = false;
-  activeLink = 'home';
+  activeLink = 'Courses';
+  businessType: string | null = '';
   dropdownOpen: string | null = null;
+
+  apiService = inject(AllAPIService)
 
   toggleSidebar() {
     this.dropdownOpen = null; 
     this.isClosed = !this.isClosed;
   }
-
   setActiveLink(link: string) {
     this.activeLink = link;
     // this.dropdownOpen = null; 
@@ -34,5 +37,8 @@ export class DashboardComponent  {
     }else{
       this.isClosed = !this.isClosed
     }
+  }
+  ngOnInit(): void {
+    this.businessType = this.apiService.getBusinessType();
   }
 }

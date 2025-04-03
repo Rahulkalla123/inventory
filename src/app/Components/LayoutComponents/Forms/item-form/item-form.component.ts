@@ -25,12 +25,12 @@ export class ItemFormComponent implements OnInit{
     type: '',  // "service" or "goods"
     unit: 'Box',   // "kg", "cm", etc.
     Dimensions: "",
-    Manufacturer: "",
+    manufacturer: "",
     upc: "",
     EAN: "",
     Weight: "",
     Brand : "",
-    MPN: "",
+    mpn: "",
     ISBN: ""
   };
 

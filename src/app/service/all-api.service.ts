@@ -55,11 +55,17 @@ export class AllAPIService {
   }
   
   getUserDetails(): Observable<any> {
-    return this.http.get<{ success: boolean; user: any }>(`${this.apiUrl}/GetCurrentUser`).pipe(
+    return this.http.get<{ success: boolean; user: any;businessType: any }>(`${this.apiUrl}/GetCurrentUser`).pipe(
       tap(response => {
-       localStorage.setItem('companyName', response.user.name)
+       localStorage.setItem('companyName', response.user.name);
+       localStorage.setItem('businessType',response.businessType);
+
       })
     );
+  }
+
+  getBusinessType(): string | null {
+    return localStorage.getItem('businessType');
   }
 
   getStoredUserDetails(): any {

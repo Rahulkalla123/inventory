@@ -6,8 +6,37 @@
         <span class="logo-name">Inventory</span>
       </div>
     </nav>
+    @if(businessType === 'TRAINING_INSTITUTE'){
       <div class="routerLinks-main">
-        <a routerLink="/layout/homemain" 
+        <a routerLink="/layout/homemain"
+        [class.active]="activeLink === 'Courses'" 
+        (click)="setActiveLink('Courses')"><i class="fa-solid fa-user-graduate" 
+        [matTooltip]="isClosed ? 'Courses':''" 
+        matTooltipPosition="right"></i>
+        <span *ngIf="!isClosed">Courses</span></a>
+        <a routerLink="/layout/item"
+        [class.active]="activeLink === 'Enquiries'" 
+        (click)="setActiveLink('Enquiries')"><i class="fas fa-info-circle" 
+        [matTooltip]="isClosed ? 'Enquiries':''" 
+        matTooltipPosition="right"></i>
+        <span *ngIf="!isClosed">Enquiries</span></a>
+        <a routerLink="/staff"
+        [class.active]="activeLink === 'Enrollments'" 
+        (click)="setActiveLink('Enrollments')"><i class="fa fa-registered" 
+        [matTooltip]="isClosed ? 'Enrollments':''" 
+        matTooltipPosition="right"></i>
+        <span *ngIf="!isClosed">Enrollments</span></a>
+        <a routerLink="/staff"
+        [class.active]="activeLink === 'Instructors'" 
+        (click)="setActiveLink('Instructors')"><i class="fa-solid fa-chalkboard-user" 
+        [matTooltip]="isClosed ? 'Instructors':''" 
+        matTooltipPosition="right"></i>
+        <span *ngIf="!isClosed">Instructors</span></a>
+      </div>
+    }
+    @else {
+      <div class="routerLinks-main">
+      <a routerLink="/layout/homemain" 
            [class.active]="activeLink === 'home'" 
            (click)="setActiveLink('home')"
            >
@@ -52,7 +81,6 @@
           <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Payment Received <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
           <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Sales Returns <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
           <a routerLink="/layout/inventoryAdjustment" (click)="setActiveLink('sales')">Credit Returns <i class="fa fa-plus-circle actions" aria-hidden="true"></i></a>
-
 
         </div>
         </div>
@@ -99,6 +127,8 @@
           <span *ngIf="!isClosed">Documents</span>
         </a>
       </div>
+    }
+      
     
     <div class="toggle-btn" (click)="toggleSidebar()">
       <i class="fas" [matTooltip]="isClosed ? 'open': 'close'" [ngClass]="isClosed ? 'fa-chevron-right' : 'fa-chevron-left'"></i>

@@ -8,7 +8,7 @@
     </nav>
     @if(businessType === 'TRAINING_INSTITUTE'){
       <div class="routerLinks-main">
-        <a routerLink="/layout/homemain"
+        <a routerLink="/layout/courses"
         [class.active]="activeLink === 'Courses'" 
         (click)="setActiveLink('Courses')"><i class="fa-solid fa-user-graduate" 
         [matTooltip]="isClosed ? 'Courses':''" 

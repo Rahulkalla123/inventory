@@ -32,6 +32,7 @@ export class HomeMainComponent implements OnInit {
   }
 
   GetUserDetails() {
+    debugger
     if (isPlatformBrowser(this.platformId)) {
       const token = localStorage.getItem('AccessToken');
       if (!token) {

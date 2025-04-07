@@ -1,52 +1,28 @@
-<div class="container mt-5">
-    <nav class="navbar navbar-light bg-light justify-content-between">
-        <div class="form-inline">
-          <a href="">All items <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-        </div>
-        <div class="buttonMain">
-          <button type="button" class="btn" routerLink="/layout/itemForm">
-            <i class="fa fa-plus" aria-hidden="true"></i> NEW
-          </button>
-          <i class="fa fa-ellipsis-v menu" aria-hidden="true"></i>
-        </div>
-      </nav>
-    <div class="course-list">
-        <!-- HTML Course -->
-        <div class="course">
-            <!-- unsplash img for html -->
-            <img src="assets/image.png" alt="HTML Course Image">
-            <h2>HTML Basics</h2>
-            <p>Learn the fundamentals of HTML including tags, attributes, and semantic markup.</p>
-        </div>
-        <!-- CSS Course -->
-        <div class="course">
-            <img src="assets/image.png" alt="CSS Course Image">
-            <h2>CSS Styling</h2>
-            <p>Master CSS styling techniques such as selectors, box model, flexbox, and grid.</p>
-        </div>
-        <!-- JavaScript Course -->
-        <div class="course">
-            <img src="assets/image.png" alt="JavaScript Course Image">
-            <h2>JavaScript Fundamentals</h2>
-            <p>Explore the core concepts of JavaScript including variables, functions, and loops.</p>
-        </div>
-        <!-- React Course -->
-        <div class="course">
-            <img src="assets/image.png" alt="React Course Image">
-            <h2>React Development</h2>
-            <p>Build dynamic web applications with React.js, including state management and component-based architecture.</p>
-        </div>
-        <!-- Next.js Course -->
-        <div class="course">
-            <img src="assets/image.png" alt="Next.js Course Image">
-            <h2>Next.js Essentials</h2>
-            <p>Discover the power of Next.js for server-side rendering, routing, and API integration.</p>
-        </div>
-        <!-- TypeScript Course -->
-        <div class="course">
-            <img src="assets/image.png" alt="TypeScript Course Image">
-            <h2>TypeScript for Web Development</h2>
-            <p>Learn TypeScript to enhance the development of scalable and maintainable web applications.</p>
-        </div>
+<div class="courses-main mt-5">
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <div class="all-items">
+      <a href="">All items <i class="fa fa-angle-down" aria-hidden="true"></i></a>
     </div>
+    <div class="courses-nav-button">
+      <button type="button" class="btn btns" routerLink="/layout/itemForm">
+        <i class="fa fa-plus" aria-hidden="true"></i> NEW
+      </button>
+      <i class="fa fa-ellipsis-v menu" aria-hidden="true"></i>
+    </div>
+  </nav>
+  <div class="row courses-cards">
+    <div class="card col-md-4" *ngFor="let card of cards; let i = index">
+      <div class="card-title">
+        <div class="card-image">
+          <img [src]="card.img" alt="card image" width="100%" height="100px">
+        </div>
+        <div class="card-content">
+          <h2>
+            {{ card.title }}
+            <small>{{ card.subtitle }}</small>
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

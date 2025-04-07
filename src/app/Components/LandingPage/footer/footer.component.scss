@@ -22,15 +22,6 @@
     }
 }
 
-.right-section {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr)); 
-    padding: 3em;
-    gap: 2rem;
-    align-items: start; 
-}
-
 .banner {
     width: 80%;
     display: flex;
@@ -43,6 +34,17 @@
 .banner :hover {
     transform: scale(1.1);
 }
+
+.right-section {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)); 
+    padding: 3em;
+    gap: 2rem;
+    align-items: start; 
+}
+
+
 .column {
     width: 100%;
     height: auto; 

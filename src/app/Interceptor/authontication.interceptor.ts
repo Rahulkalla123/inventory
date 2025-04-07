@@ -1,43 +1,91 @@
-import { HttpErrorResponse, HttpEvent, HttpHandlerFn, HttpInterceptorFn, HttpRequest,} from '@angular/common/http';
-import { BehaviorSubject,catchError,filter,Observable,switchMap,take,throwError } from 'rxjs';
+import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpHandlerFn,
+  HttpInterceptorFn,
+  HttpRequest,
+} from '@angular/common/http';
+import {
+  BehaviorSubject,
+  Observable,
+  catchError,
+  filter,
+  switchMap,
+  take,
+  throwError,
+} from 'rxjs';
 import { AllAPIService } from '../service/all-api.service';
 import { inject } from '@angular/core';
 
-// ✅ Validate token (Check expiry)
-function isValidToken(token: string | null): boolean {
-  if (!token) return false;
-
+// ✅ Token Expiry Check
+function isTokenExpired(token: string | null): boolean {
+  if (!token) return true;
   try {
     const payload = JSON.parse(atob(token.split('.')[1]));
-    const expiry = payload.exp * 1000; 
-
-    // Check if token is expired
-    return Date.now() < expiry;
-  } catch (error) {
-    console.error('Invalid token format', error);
-    return false;
+    return Date.now() >= payload.exp * 1000;
+  } catch {
+    return true;
   }
 }
 
-// ✅ Authentication Interceptor
+// ✅ Skip token logic for these endpoints
+const excludedUrls = ['/Login', '/Register', '/RefreshToken'];
+
+let isRefreshing = false;
+const refreshTokenSubject = new BehaviorSubject<string | null>(null);
+
+// ✅ Interceptor
 export const authonticationInterceptor: HttpInterceptorFn = (
   req: HttpRequest<any>,
   next: HttpHandlerFn
 ): Observable<HttpEvent<any>> => {
   const authService = inject(AllAPIService);
-  let accessToken = localStorage.getItem('AccessToken');
-  let isRefreshing = false;
-  let refreshTokenSubject = new BehaviorSubject<string | null>(null);
+  const accessToken = localStorage.getItem('AccessToken');
+  const isExcluded = excludedUrls.some(url => req.url.includes(url));
 
-  // ✅ Attach Access Token to Request
-  let authReq = addToken(req, accessToken);
+  // ✅ Skip token checks for login/refresh/register
+  if (isExcluded) {
+    return next(req);
+  }
 
-  return next(authReq).pipe(
+  // ✅ If token is expired, refresh it
+  if (isTokenExpired(accessToken)) {
+    if (!isRefreshing) {
+      isRefreshing = true;
+      refreshTokenSubject.next(null);
+
+      return authService.refreshToken().pipe(
+        switchMap((response: any) => {
+          if (response?.accessToken) {
+            isRefreshing = false;
+            refreshTokenSubject.next(response.accessToken);
+            return next(addToken(req, response.accessToken));
+          } else {
+            isRefreshing = false;
+            authService.logout();
+            return throwError(() => new Error('Refresh token failed'));
+          }
+        }),
+        catchError((err) => {
+          isRefreshing = false;
+          authService.logout();
+          return throwError(() => err);
+        })
+      );
+    } else {
+      return refreshTokenSubject.pipe(
+        filter(token => token !== null),
+        take(1),
+        switchMap(token => next(addToken(req, token!)))
+      );
+    }
+  }
+
+  // ✅ Normal flow with valid access token
+  return next(addToken(req, accessToken)).pipe(
     catchError((error) => {
       if (error instanceof HttpErrorResponse && error.status === 401) {
-        console.warn('Token expired or unauthorized, attempting refresh...');
-
-        // If token is invalid or expired, attempt refresh
+        alert('Session expired, please login again!');
         if (!isRefreshing) {
           isRefreshing = true;
           refreshTokenSubject.next(null);
@@ -45,40 +93,39 @@ export const authonticationInterceptor: HttpInterceptorFn = (
           return authService.refreshToken().pipe(
             switchMap((response: any) => {
               if (response?.accessToken) {
-                console.log('Token refreshed successfully!');
                 isRefreshing = false;
                 refreshTokenSubject.next(response.accessToken);
                 return next(addToken(req, response.accessToken));
               } else {
-                console.warn('Refresh failed. Logging out user.');
+                isRefreshing = false;
                 authService.logout();
                 return throwError(() => error);
               }
             }),
-            catchError((refreshError) => {
+            catchError((refreshErr) => {
               isRefreshing = false;
-              console.error('Error refreshing token:', refreshError);
               authService.logout();
-              return throwError(() => error);
+              return throwError(() => refreshErr);
             })
           );
         } else {
           return refreshTokenSubject.pipe(
-            filter((token) => token !== null),
+            filter(token => token !== null),
             take(1),
-            switchMap((token) => next(addToken(req, token!)))
+            switchMap(token => next(addToken(req, token!)))
           );
         }
       }
+
       return throwError(() => error);
     })
   );
 };
 
-// ✅ Add Token to Request
-function addToken(request: HttpRequest<any>, token: string | null) {
-  if (!token) return request;
-  return request.clone({
+// ✅ Add Authorization Header
+function addToken(req: HttpRequest<any>, token: string | null): HttpRequest<any> {
+  if (!token) return req;
+  return req.clone({
     setHeaders: {
       Authorization: `Bearer ${token}`,
     },

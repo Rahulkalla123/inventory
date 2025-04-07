@@ -2,19 +2,19 @@
   transition: all 0.5s ease-in-out;
 }
 
-.main-header {
+.nav-main-header {
   background-color: white;
   padding:12px 25px;
   border-bottom: 1px solid #e7ebf0;
   @include smooth-transition;
-  .container {
+  .nav-main-container {
     max-width: 100%;
   }
-  .logo {
+  .nav-logo {
     display: flex;
     align-items: center;
   }
-  .logo img {
+  .nav-logo img {
     height: 40px;
   }
 
@@ -31,7 +31,7 @@
     }
   }
 
-  .auth-buttons {
+  .nav-signInUp-buttons {
      .signUp{
       margin-left: 10px;
       background-color: #e42527;
@@ -47,19 +47,8 @@
   }
 }
 
-.sub-header {
+.nav-sub-header {
   background-color: white;
   padding: 12px 25px;
   @include smooth-transition;
-  .container {
-  max-width: 100%;
-padding: 0px 30px;
-}
-
-  &.fixed-top {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 10;
-  }
 }

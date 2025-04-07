@@ -36,6 +36,7 @@ export class LoginComponent {
   route   = inject(Router);
 
   onSubmit(form: NgForm) {
+    debugger
     if(!form.valid) {
       alert('Please fill all the required fields')
       return;

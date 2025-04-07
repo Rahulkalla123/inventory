@@ -1,18 +1,18 @@
-<div class="itemsMain">
+<div class="enquiries-Main">
     <nav class="navbar navbar-light bg-light justify-content-between">
-      <div class="form-inline">
+      <div class="all-items">
         <a href="">All items <i class="fa fa-angle-down" aria-hidden="true"></i></a>
       </div>
-      <div class="buttonMain">
+      <div class="courses-nav-button">
         <button type="button" class="btn" routerLink="/layout/itemForm">
           <i class="fa fa-plus" aria-hidden="true"></i> NEW
         </button>
-        <div class="iconsize">
+        <div class="nav-icons">
           <a (click)="changeModeTable()" [class.active]="table">
-            <i class="fa fa-list listicon fa-xs"></i>
+            <i class="fa fa-list tableList fa-xs"></i>
           </a>
           <a (click)="changeModeCard()" [class.active]="card">
-            <i class="fa fa-th-large listlarge fa-xs"></i>
+            <i class="fa fa-th-large cardList fa-xs"></i>
           </a>
         </div>
         <i class="fa fa-ellipsis-v menu" aria-hidden="true"></i>

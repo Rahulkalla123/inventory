@@ -88,18 +88,22 @@
         color: white;
       }
     }
+
     .link {
       text-align: center;
       display: inline-block;
-  cursor: pointer;
-  transition: color 0.3s ease-in-out;
+      cursor: pointer;
+      transition: color 0.3s ease-in-out;
+
       p {
         font-size: 18px;
         color: #0f254e;
         cursor: pointer;
+
         span {
-          color:#03a9f5;
+          color: #03a9f5;
         }
+
         .icon {
           color: #000;
           margin: 10px;
@@ -107,6 +111,7 @@
         }
       }
     }
+
     .link:hover .icon {
       transform: translateX(10px);
     }

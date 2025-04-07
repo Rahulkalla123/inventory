@@ -1,60 +1,15 @@
+.enquiries-Main{
 .navbar {
   margin-top: 5em;
   padding: 10px 2em;
+  .all-items a {
+    text-decoration: none;
+  }
 }
 
-.form-inline a {
-  text-decoration: none;
-}
-
-.buttonMain {
+.courses-nav-button {
   display: flex;
-  gap: 1em;.item-details {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin-top: 20px;
-
-  h2 {
-    margin-top: 0;
-  }
-
-  p {
-    margin-bottom: 10px;
-  }
-}
-
-/* Image Upload Box */
-.image-upload {
-  margin-top: 20px;
-  .image-box {
-    width: 100%;
-    padding: 20px;
-    text-align: center;
-    border: 2px dashed #ccc;
-    background-color: #f9f9f9;
-    cursor: pointer;
-    p {
-      margin-top: 10px;
-      font-size: 14px;
-      span {
-        color: #007bff;
-        cursor: pointer;
-      }
-    }
-    &:hover {
-      border-color: #007bff;
-    }
-  }
-  small {
-    display: block;
-    margin-top: 5px;
-    color: #888;
-  }
-}
-
-}
-
+  gap: 1em;
 .btn {
   background-color: #0d6efd;
   display: flex;
@@ -63,36 +18,35 @@
   color: #fff;
   font-size: .6rem;
 }
-
-.iconsize a {
-  cursor: pointer;
-}
-
-.iconsize .listicon {
-  border: 1px solid #c6c6c6;
-  padding: 12px 5px;
-  transition: 0.3s;
-  border-radius: 5px 0px 0px 5px;
-  color: #333;
-}
-.iconsize .listlarge {
-  border-radius: 0px 5px 5px 0px;
-  border: 1px solid #c6c6c6;
-  color: #333;
-  padding: 12px 5px;
-}
-
-.iconsize a.active i {
-  background-color: #e1e1e1;
-  color: #333;
-  cursor: default;
-  border-color: #c6c6c6;
-}
-
 .menu {
   border: 1px solid #c6c6c6;
   padding: 5px 10px;
   border-radius: 5px;
+}
+.nav-icons{
+  a {
+     cursor: pointer;
+    }
+    .tableList {
+      border: 1px solid #c6c6c6;
+      padding: 12px 5px;
+      transition: 0.3s;
+      border-radius: 5px 0px 0px 5px;
+      color: #333;
+    }
+    .cardList {
+      border-radius: 0px 5px 5px 0px;
+      border: 1px solid #c6c6c6;
+      color: #333;
+      padding: 12px 5px;
+    }
+    a.active i {
+      background-color: #e1e1e1;
+      color: #333;
+      cursor: default;
+      border-color: #c6c6c6;
+    }
+}
 }
 
 .table-container {
@@ -100,11 +54,13 @@
   overflow-y: auto;
   margin-top: 10px;
   padding: 0em 2em;
-}
-
-.table-container table {
-  width: 100%;
-  font-size: 12px;
+  table {
+    width: 100%;
+    font-size: 12px;
+  }
+  tr {
+    cursor: pointer;
+  }
 }
 
 .card-container {
@@ -115,64 +71,69 @@
   padding: 0em 2em;
   max-height: 400px;
   overflow-y: auto;
-}
-
-.checkBox {
-  display: none;
-}
-.card {
-  text-align: center;
-  padding: 20px;
-  min-height: 260px;
-  transition: all 250ms cubic-bezier(.02,.01,.47,1);
-  box-shadow: 0 0 30px rgba(219, 219, 219, .5);
-  position: relative;
-  border: 1px solid transparent;
-  transition: border 0.3s ease-in-out;
-}
-.card:hover {
-  border: 2px solid #007bff;
-  border-radius: 8px;
-  .checkBox {
-    display: block;
+  .card {
+    text-align: center;
+    padding: 20px;
+    min-height: 260px;
+    transition: all 250ms cubic-bezier(.02,.01,.47,1);
+    box-shadow: 0 0 30px rgba(219, 219, 219, .5);
+    position: relative;
+    border: 1px solid transparent;
+    transition: border 0.3s ease-in-out;
   }
+  .card input[type='checkbox'] {
+    position: absolute;
+    margin-top: -10px;
+    margin-left: -10px;
+  }
+  .checkBox {
+    display: none;
+  }
+  .card:hover {
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    .checkBox {
+      display: block;
+    }
+  }
+  .card-body {
+    cursor: pointer;
+ .item-image {
+   width: 80px;
+   height: 80px;
+   margin-bottom: 10px;
+ }
+ 
+ .item-name {
+   font-weight: bold;
+   font-size: 13px;
+ }
+ 
+ .item-sku {
+   color: #6c757d;
+   font-size: 13px;
+ }
+ 
+ .item-price {
+   font-size: 14px;
+   font-weight: 500;
+    span {
+     color: #6c7184;
+   }
+ }
+ }
+}
 }
 
-.card-body {
-cursor: pointer;
-}
 
-.card input[type='checkbox'] {
-  position: absolute;
-  margin-top: -10px;
-  margin-left: -10px;
-}
 
-.item-image {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 10px;
-}
 
-.item-name {
-  font-weight: bold;
-  font-size: 13px;
-}
 
-.item-sku {
-  color: #6c757d;
-  font-size: 13px;
-}
 
-.item-price {
-  font-size: 14px;
-  font-weight: 500;
-}
 
-.item-price span {
-  color: #6c7184;
-}
 
-tr {
-  cursor: pointer;
-}
+
+
+
+
+

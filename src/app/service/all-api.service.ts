@@ -23,14 +23,12 @@ export class AllAPIService {
   }
 
   login(userData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/Login`, userData).pipe(
-      tap((response: any) => {
-        this.storeTokens(response.accessToken, response.refreshToken);
-      })
-    );
+    debugger
+    return this.http.post(`${this.apiUrl}/Login`, userData)
   }
 
   refreshToken(): Observable<any> {
+    debugger
     const refreshToken = localStorage.getItem('RefreshToken');
     if (!refreshToken) {
       console.warn('No refresh token found. Cannot refresh.');
@@ -105,23 +103,8 @@ export class AllAPIService {
   }
 
   logout(): void {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
-    localStorage.removeItem('companyName');
+    this.userDetailsSubject.next(null);
     window.location.href = '/home';
   }
-
-  ngOnInit(): void {
-    if (this.isAuthenticated()) {
-      this.getUserDetails().subscribe(
-        (response) => {
-          console.log('User auto-logged in', response);
-        },
-        (error) => {
-          console.error('Error fetching user details after login:', error);
-        }
-      );
-    }
-  }  
 
 }

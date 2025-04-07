@@ -4,13 +4,12 @@
     padding: 40px;
     border-radius: 10px;
     overflow: hidden;
+     h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
   }
-  
-  .integration-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
+
   .icon-row {
     display: flex;
     justify-content: center;
@@ -68,7 +67,6 @@
     opacity: 1;
   }
   
-  /* Right Icons Move Right */
   .right {
     transform: translateX(0px);
   }
@@ -78,7 +76,6 @@
     opacity: 1;
   }
   
-  /* More Integrations */
   .more-integrations {
     margin-top: 20px;
   }
